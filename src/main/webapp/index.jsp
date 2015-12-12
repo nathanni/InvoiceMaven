@@ -12,12 +12,13 @@
 <center>
     <c:out value="${error}"></c:out>
 
-    <form action="" method="post">
+    <form action="invoice" method="post">
 
         Invoice: <input type="text" name="invoice"/>
         <input type="submit" value="Submit"/>
 
     </form>
+
 
 </center>
 
