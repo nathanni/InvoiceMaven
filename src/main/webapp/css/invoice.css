@@ -1,0 +1,122 @@
+
+
+/*ATRIUM LOGO TD WIDTH*/
+.td.logo {
+    width: 15%;
+}
+
+
+/*REMIT TD WIDTH*/
+.td.remit {
+    width: auto;
+}
+
+.td.invoice {
+    width: auto;
+}
+
+/*REMIT HEAD*/
+.div.remit.head {
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+}
+
+/*REMIT TEXT*/
+.div.remit.text {
+    text-align: center;
+    font-size: x-small;
+}
+
+
+/*RIGHT CONER INVOICE*/
+.div.invoice.head{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+
+
+
+/*RIGHT CORNER INVOICE TABLE HEAD*/
+.tr.invoice.head {
+    font-weight: bold;
+    text-align: center;
+    font-size: small;
+}
+
+/*RIGHT CORNER INVOICE TABLE BODY TR*/
+.tr.invoice.body {
+    text-align: center;
+    font-size: large;
+}
+
+/*RIGHT CORNER INVOICE TABLE BODY TD*/
+.td.invoice.body {
+    padding: 10px;
+}
+
+
+
+/*"TO" AND "SHIP TO" TAGS*/
+.span.shiptag {
+    border-style: solid;
+    border-width: 1px;
+    font-size: x-small;
+    font-weight: bold;
+    margin-left: 6px;
+}
+
+/*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY DIV*/
+.div.body1{
+    font-size: small;
+    margin: 0px;
+}
+
+/*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY TD*/
+.td.body1{
+    padding: 5px;
+}
+
+/*0 PADDING*/
+.td.zeropadding{
+    padding: 0px;
+}
+
+/*INVOICE TABLE HEADER*/
+.div.invoice.tableheader{
+    font-size: small;
+    font-weight: bold;
+    padding-top: 4px;
+    text-align: center;
+}
+
+/*INVOICE TABLE CONTEXT BODY*/
+.div.invoice.tablebody{
+    font-size: medium;
+    padding: 5px;
+    text-align: center;
+
+}
+
+/*MAIN TABLE HEADER*/
+.div.tableheader{
+    font-size: small;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*MAIN TABLE BODY*/
+.div.tablebody {
+    font-size: medium;
+    text-align: center;
+}
+
+.div.tablebody.inquiries {
+    text-align: left;
+    font-weight: bolder;
+    font-size: x-small;
+    padding: 0px;
+}
+
