@@ -20,24 +20,28 @@ public class InvoiceServlet extends javax.servlet.http.HttpServlet {
     private LineWrapperService lineWrapperService = new LineWrapperService();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        doGet(request, response);
-    }
-
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String invoice = request.getParameter("invoice").trim();
-        if (invoice != null && !"".equals(invoice)) {
-            Header header = headerDAO.getHeaderByInovice(invoice);
-            List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList(invoice);
-            System.out.println(header);
-            System.out.println(lineWrappers);
-            request.setAttribute("header", header);
-            request.setAttribute("lines", lineWrappers);
-            request.getRequestDispatcher("/WEB-INF/pages/invoice.jsp").forward(request, response);
-            return;
+        String invoiceParam = request.getParameter("invoice");
+        if(invoiceParam != null) {
+            String invoice = invoiceParam.trim();
+            if (invoice != null && !"".equals(invoice)) {
+                Header header = headerDAO.getHeaderByInovice(invoice);
+                List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList(invoice);
+                if(header != null && lineWrappers != null) {
+                    request.setAttribute("header", header);
+                    request.setAttribute("lines", lineWrappers);
+                    request.getRequestDispatcher("/WEB-INF/pages/invoice.jsp").forward(request, response);
+                    return;
+                }
+            }
         }
+
 
         String errors = "Invoice not found";
         request.setAttribute("error", errors);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
+    }
+
+    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        response.sendRedirect("/index.jsp");
     }
 }

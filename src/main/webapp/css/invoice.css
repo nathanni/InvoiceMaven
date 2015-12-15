@@ -1,20 +1,51 @@
+/*container width*/
+.container {
+    width: 800px;
+}
 
 
+/*MODIFY BOOTSTRAP TABLE*/
+/*REMOVE BOOTSTRAP ROW LINES*/
+.table th, .table td {
+    border-top: none !important;
+}
+
+/*MAKE BORDER SOLID*/
+.table-mybordered {
+    border: solid;
+    border-width: 2px;
+}
+
+/*TABLE BOTTOM MARGIN*/
+.table{
+    margin: 0px;
+}
+
+
+
+
+
+/*HEADER LINE*/
 /*ATRIUM LOGO TD WIDTH*/
 .td.logo {
     width: 15%;
 }
 
-
 /*REMIT TD WIDTH*/
 .td.remit {
-    width: auto;
+    width: 21%;
 }
 
+/*INVOICE WIDTH*/
 .td.invoice {
     width: auto;
 }
 
+
+
+
+
+/*1 REMIT*/
 /*REMIT HEAD*/
 .div.remit.head {
     text-align: center;
@@ -29,36 +60,34 @@
 }
 
 
+
+
+/*2 INVOICE*/
 /*RIGHT CONER INVOICE*/
 .div.invoice.head{
     text-align: center;
     font-size: x-large;
+}
+
+/*INVOICE TABLE HEADER*/
+.div.invoice.tableheader{
+    font-size: x-small;
     font-weight: bold;
+    padding-top: 4px;
+    text-align: left;
+}
+
+/*INVOICE TABLE CONTEXT BODY*/
+.div.invoice.tablebody{
+    font-size: medium;
+    padding: 4px;
+    text-align: left;
 }
 
 
 
 
-/*RIGHT CORNER INVOICE TABLE HEAD*/
-.tr.invoice.head {
-    font-weight: bold;
-    text-align: center;
-    font-size: small;
-}
-
-/*RIGHT CORNER INVOICE TABLE BODY TR*/
-.tr.invoice.body {
-    text-align: center;
-    font-size: large;
-}
-
-/*RIGHT CORNER INVOICE TABLE BODY TD*/
-.td.invoice.body {
-    padding: 10px;
-}
-
-
-
+/*3 ADDRESS*/
 /*"TO" AND "SHIP TO" TAGS*/
 .span.shiptag {
     border-style: solid;
@@ -68,15 +97,15 @@
     margin-left: 6px;
 }
 
+/*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY TD*/
+.td.body1{
+    padding: 5px;
+}
+
 /*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY DIV*/
 .div.body1{
     font-size: small;
     margin: 0px;
-}
-
-/*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY TD*/
-.td.body1{
-    padding: 5px;
 }
 
 /*0 PADDING*/
@@ -84,39 +113,60 @@
     padding: 0px;
 }
 
-/*INVOICE TABLE HEADER*/
-.div.invoice.tableheader{
-    font-size: small;
-    font-weight: bold;
-    padding-top: 4px;
-    text-align: center;
-}
 
-/*INVOICE TABLE CONTEXT BODY*/
-.div.invoice.tablebody{
-    font-size: medium;
-    padding: 5px;
-    text-align: center;
-
-}
-
+/*4 MID HEADER*/
 /*MAIN TABLE HEADER*/
 .div.tableheader{
-    font-size: small;
+    font-size: x-small;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    padding-top:4px;
+    padding-left:4px;
+    padding-right:4px;
 }
 
 /*MAIN TABLE BODY*/
 .div.tablebody {
-    font-size: medium;
-    text-align: center;
+    font-size: small;
+    text-align: left;
+    padding: 4px;
 }
 
+/*FOR INQUIRIES*/
 .div.tablebody.inquiries {
     text-align: left;
     font-weight: bolder;
     font-size: x-small;
-    padding: 0px;
+    padding-left: 4px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
 }
+
+/*LINE TABLE BORDER*/
+.table-linetable {
+    border: solid;
+    border-width: 2px;
+}
+
+/*LINE TABLE TH*/
+.table-linetable th {
+    font-size: xx-small;
+
+}
+/*LINE TABLE HEADER DIVIDE*/
+.table-linetable tr.divide {
+    border-bottom: solid;
+    border-width: 1px;
+
+}
+
+/*LINE TABLE TD*/
+.table-linetable td{
+    font-size: x-small;
+}
+
+
+
+
 
