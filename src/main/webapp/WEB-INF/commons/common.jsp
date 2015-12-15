@@ -5,3 +5,4 @@
 <link rel="stylesheet" href="css/invoice.css">
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/validator.min.js"></script>

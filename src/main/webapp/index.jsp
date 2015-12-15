@@ -10,34 +10,41 @@
 <body>
 
 
-    <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="panel-title" align="left">Invoice History</div>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <form action="invoice" method="post" role="form" class="form-horizontal">
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title" align="left">Invoice History</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="invoice" method="post" role="form" data-toggle="validator">
+                        <div class="form-group has-feedback">
+                            <label for="inputInvoice" class="control-label">Invoice</label>
                             <div class="input-group">
-                                <input type="text" name="invoice" class="form-control" placeholder="Please input Invoice Number">
-                                <span class="input-group-btn">
-                                    <input type="submit" class="btn btn-primary" name="submit" value="Enter"/>
-                                </span>
+                                <span class="input-group-addon">#</span>
+                                <input type="text" name="invoice" maxlength="20" id="inputInvoice" class="form-control"
+                                       placeholder="Please Enter Invoice Number, only contains digits" required pattern="\s*\d+\s*">
                             </div>
-                            <c:if test="${!empty requestScope.error}">
-                                <br>
-                                <div class="alert alert-warning alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <strong>Sorry! </strong>The Invoice Number is not found in our system.
-                                </div>
-                            </c:if>
-                        </form>
-                    </div>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" name="submit" value="Search"/>
+                            &nbsp;<input class="btn btn-danger" type="reset" value="Reset">
+                        </div>
+                        <c:if test="${!empty requestScope.error}">
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <strong>Sorry! </strong>The Invoice Number is not found in our system.
+                            </div>
+                        </c:if>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

@@ -1,10 +1,9 @@
 package com.atriumwindows.servlet;
 
 
-import com.atriumwindows.dao.HeaderDAO;
-import com.atriumwindows.dao.impl.HeaderDAOImpl;
 import com.atriumwindows.domain.Header;
 import com.atriumwindows.domain.LineWrapper;
+import com.atriumwindows.service.HeaderService;
 import com.atriumwindows.service.LineWrapperService;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.util.List;
 @javax.servlet.annotation.WebServlet(name = "invoice", urlPatterns = {"/invoice"})
 public class InvoiceServlet extends javax.servlet.http.HttpServlet {
 
-    private HeaderDAO headerDAO = new HeaderDAOImpl();
+    private HeaderService headerService = new HeaderService();
     private LineWrapperService lineWrapperService = new LineWrapperService();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
@@ -24,7 +23,7 @@ public class InvoiceServlet extends javax.servlet.http.HttpServlet {
         if(invoiceParam != null) {
             String invoice = invoiceParam.trim();
             if (invoice != null && !"".equals(invoice)) {
-                Header header = headerDAO.getHeaderByInovice(invoice);
+                Header header = headerService.getHeader(invoice);
                 List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList(invoice);
                 if(header != null && lineWrappers != null) {
                     request.setAttribute("header", header);

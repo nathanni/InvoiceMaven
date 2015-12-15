@@ -22,6 +22,26 @@ public class LineWrapperService {
     List<Line> lines = lineDAO.getLinesByInvoice(invoice);
     List<LineWrapper> lineWrappers = new ArrayList<LineWrapper>();
     LineWrapper lineWrapper = null;
+
+
+
+    //if lines are not from l1 and l2
+    if(lines == null || lines.size() == 0) {
+      lines = lineDAO.getLinesByInoivceWithoutL1L2(invoice);
+      for(Line line : lines) {
+        lineDAO.handleDescWithoutL1L2(line);
+        lineWrapper = new LineWrapper();
+        lineWrapper.setConfigLine(null);
+        lineWrapper.getLines().add(line);
+        lineWrappers.add(lineWrapper);
+      }
+
+      return lineWrappers;
+    }
+
+
+
+
     HashSet validateSet = new HashSet();
     
     //group lines to linewrapper base on itemid
@@ -39,9 +59,7 @@ public class LineWrapperService {
     }
     if(lineWrapper != null) lineWrappers.add(lineWrapper); //add last line
 
-   
-    
-    
+
     return lineWrappers;
     
   }
