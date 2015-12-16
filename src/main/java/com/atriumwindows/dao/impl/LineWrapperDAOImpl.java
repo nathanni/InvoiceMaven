@@ -6,9 +6,9 @@ import com.atriumwindows.domain.LineWrapper;
 
 public class LineWrapperDAOImpl extends DAOImpl<LineWrapper> implements LineWrapperDAO{
 
-  private static final Integer INITIAL = 0;
-  private static final Integer MULLED_UNIT = 3;
-  private static final Integer BAY_BOW = 4;
+  private static final int INITIAL = 0;
+  private static final int MULLED_UNIT = 3;
+  private static final int BAY_BOW = 4;
   
   @Override
   public boolean addLinesToLineWrapper(LineWrapper lineWrapper, Line line) {
@@ -17,7 +17,7 @@ public class LineWrapperDAOImpl extends DAOImpl<LineWrapper> implements LineWrap
       //mull unit, need to set configuration line
       if((line.getLineTypeId() == 3 || line.getMuType() != null) && lineWrapper.getLineType() == INITIAL) {
         lineWrapper.setLineType(MULLED_UNIT);
-        lineWrapper.setConfigLine((new Line(line.getOrderQty(), line.getShippedQty(), line.getL1Desc())));
+        lineWrapper.setConfigLine((new Line(line.getShippedQty(), line.getL1Desc())));
       }
       
       if(line.getLineTypeId() == 4 && lineWrapper.getLineType() == INITIAL) {

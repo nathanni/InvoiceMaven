@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/commons/common.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,7 +16,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="invoice" method="post" role="form" data-toggle="validator">
+                    <form action="/invoice" method="post" role="form" data-toggle="validator">
                         <div class="form-group has-feedback">
                             <label for="inputInvoice" class="control-label">Invoice</label>
                             <div class="input-group">

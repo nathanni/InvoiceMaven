@@ -1,7 +1,4 @@
-/*container width*/
-.container {
-    width: 800px;
-}
+
 
 
 /*MODIFY BOOTSTRAP TABLE*/
@@ -13,7 +10,7 @@
 /*MAKE BORDER SOLID*/
 .table-mybordered {
     border: solid;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 /*TABLE BOTTOM MARGIN*/
@@ -28,7 +25,7 @@
 /*HEADER LINE*/
 /*ATRIUM LOGO TD WIDTH*/
 .td.logo {
-    width: 15%;
+    width: 21%;
 }
 
 /*REMIT TD WIDTH*/
@@ -67,6 +64,7 @@
 .div.invoice.head{
     text-align: center;
     font-size: x-large;
+    font-weight: bolder;
 }
 
 /*INVOICE TABLE HEADER*/
@@ -80,9 +78,10 @@
 /*INVOICE TABLE CONTEXT BODY*/
 .div.invoice.tablebody{
     font-size: medium;
-    padding: 4px;
+    padding: 8px;
     text-align: left;
 }
+
 
 
 
@@ -114,6 +113,8 @@
 }
 
 
+
+
 /*4 MID HEADER*/
 /*MAIN TABLE HEADER*/
 .div.tableheader{
@@ -143,15 +144,19 @@
     padding-bottom: 0px;
 }
 
+
+
+/*LINE TABLE*/
 /*LINE TABLE BORDER*/
 .table-linetable {
     border: solid;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 /*LINE TABLE TH*/
-.table-linetable th {
+.table-linetable td.head {
     font-size: xx-small;
+    font-weight: bold;
 
 }
 /*LINE TABLE HEADER DIVIDE*/

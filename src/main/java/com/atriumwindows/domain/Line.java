@@ -2,17 +2,17 @@ package com.atriumwindows.domain;
 
 public class Line {
   
-  private Integer lineTypeId;
+  private int lineTypeId;
   private String muType;
-  private Integer seqNo;
+  private int seqNo;
   private String partNumber;
   private String partDesc;
   private String skuNumber;
   private Double unitPrice;
   private Double extensionPrice;
   private Double discount;
-  private Integer orderQty;
-  private Integer shippedQty;
+  private int orderQty;
+  private int shippedQty;
   private String itemId;
   private String unitId;
   
@@ -25,11 +25,11 @@ public class Line {
   private String sizeNS;
   private String sizeES;
 
-  public Integer getLineTypeId() {
+  public int getLineTypeId() {
     return lineTypeId;
   }
 
-  public void setLineTypeId(Integer lineTypeId) {
+  public void setLineTypeId(int lineTypeId) {
     this.lineTypeId = lineTypeId;
   }
 
@@ -41,11 +41,11 @@ public class Line {
     this.muType = muType;
   }
 
-  public Integer getSeqNo() {
+  public int getSeqNo() {
     return seqNo;
   }
 
-  public void setSeqNo(Integer seqNo) {
+  public void setSeqNo(int seqNo) {
     this.seqNo = seqNo;
   }
 
@@ -97,19 +97,19 @@ public class Line {
     this.discount = discount;
   }
 
-  public Integer getOrderQty() {
+  public int getOrderQty() {
     return orderQty;
   }
 
-  public void setOrderQty(Integer orderQty) {
+  public void setOrderQty(int orderQty) {
     this.orderQty = orderQty;
   }
 
-  public Integer getShippedQty() {
+  public int getShippedQty() {
     return shippedQty;
   }
 
-  public void setShippedQty(Integer shippedQty) {
+  public void setShippedQty(int shippedQty) {
     this.shippedQty = shippedQty;
   }
 
@@ -185,16 +185,14 @@ public class Line {
     this.sizeES = sizeES;
   }
 
-  //For Config Line
-  public Line(Integer orderQty, Integer shippedQty, String lineDesc) {
-    this.orderQty = orderQty;
+  public Line() {
+  }
+
+  public Line(int shippedQty, String lineDesc) {
     this.shippedQty = shippedQty;
     this.lineDesc = lineDesc;
   }
 
-  public Line() {
-
-  }
 
   @Override
   public String toString() {

@@ -6,7 +6,7 @@ import java.util.List;
  public class LineWrapper {
 
    //3 mullunit, 4 bay/bow
-   private Integer lineType;
+   private int lineType;
 
    private Line configLine;
 
@@ -16,11 +16,11 @@ import java.util.List;
      this.lines = new ArrayList<Line>();
    }
 
-   public Integer getLineType() {
+   public int getLineType() {
      return lineType;
    }
 
-   public void setLineType(Integer lineType) {
+   public void setLineType(int lineType) {
      this.lineType = lineType;
    }
 
@@ -42,10 +42,10 @@ import java.util.List;
 
    @Override
    public String toString() {
-     return "LineWrapper [lineType=" + lineType + ", configLine=" + configLine + ", lines=" + lines + "]";
+     return "LineWrapper{" +
+             "lineType=" + lineType +
+             ", configLine=" + configLine +
+             ", lines=" + lines +
+             '}';
    }
-
-
-
-
  }

@@ -6,7 +6,7 @@ public class Header {
   
   private String invoice;
   private Date invoiceDate;
-  private Double cashDiscPct;
+  private double cashDiscPct;
   private Date discTerms;
   private Date netTerms;
   private String purchaseOrder;
@@ -33,7 +33,7 @@ public class Header {
   private String soldToAddr5;
   private String soldToAddr6;
   
-  private Double invoiceTotal;
+  private double invoiceTotal;
 
   public String getInvoice() {
     return invoice;
@@ -51,11 +51,11 @@ public class Header {
     this.invoiceDate = invoiceDate;
   }
 
-  public Double getCashDiscPct() {
+  public double getCashDiscPct() {
     return cashDiscPct;
   }
 
-  public void setCashDiscPct(Double cashDiscPct) {
+  public void setCashDiscPct(double cashDiscPct) {
     this.cashDiscPct = cashDiscPct;
   }
 
@@ -243,11 +243,11 @@ public class Header {
     this.soldToAddr6 = soldToAddr6;
   }
 
-  public Double getInvoiceTotal() {
+  public double getInvoiceTotal() {
     return invoiceTotal;
   }
 
-  public void setInvoiceTotal(Double invoiceTotal) {
+  public void setInvoiceTotal(double invoiceTotal) {
     this.invoiceTotal = invoiceTotal;
   }
 
@@ -284,3 +284,4 @@ public class Header {
             '}';
   }
 }
+

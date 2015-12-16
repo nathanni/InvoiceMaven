@@ -28,6 +28,7 @@ public class LineWrapperService {
     //if lines are not from l1 and l2
     if(lines == null || lines.size() == 0) {
       lines = lineDAO.getLinesByInoivceWithoutL1L2(invoice);
+      if(lines == null || lines.size() == 0) return null; //no lines get
       for(Line line : lines) {
         lineDAO.handleDescWithoutL1L2(line);
         lineWrapper = new LineWrapper();

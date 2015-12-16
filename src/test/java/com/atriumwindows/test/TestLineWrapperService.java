@@ -14,7 +14,7 @@ public class TestLineWrapperService {
   @Test
 
   public void test() {
-    List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList("02052691");
+    List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList("05000001");
     
     for(LineWrapper lineWrapper: lineWrappers) {
       System.out.println(lineWrapper);

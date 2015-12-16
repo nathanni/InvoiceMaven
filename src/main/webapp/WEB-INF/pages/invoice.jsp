@@ -5,17 +5,18 @@
   Time: 9:43 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../commons/common.jsp" %>
 <html>
 <head>
+<%@include file="/WEB-INF/commons/common.jsp"%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
     <title>Invoice</title>
 </head>
 <body>
 <div class="container">
     <table class="table">
         <tr>
-            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="200" height="95"></td>
+            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="100"/>
+            </td>
             <td class="td remit">
                 <div class="div remit head">REMIT TO:</div>
                 <div class="div remit text">
@@ -36,7 +37,8 @@
                         </td>
                         <td>
                             <div class="div invoice tableheader">DATE</div>
-                            <div class="div invoice tablebody"><fmt:formatDate value="${requestScope.header.invoiceDate}" pattern="MM/dd/yyyy"/></div>
+                            <div class="div invoice tablebody"><fmt:formatDate
+                                    value="${requestScope.header.invoiceDate}" pattern="MM/dd/yyyy"/></div>
                         </td>
                         <td>
                             <div class="div invoice tableheader">PAGE</div>
@@ -48,11 +50,15 @@
         </tr>
         <tr>
             <td class="td zeropadding" colspan="2">
-                <span class="span shiptag">&nbsp;SELL TO&nbsp;</span>
+                <span class="span shiptag">TO</span>
             </td>
             <td class="td zeropadding">
-                <span class="span shiptag">&nbsp;SHIP TO&nbsp;</span>
+                <span class="span shiptag">SHIP TO</span>
+                <c:if test="${!empty requestScope.header.approvalCode}">
+                    <span class="span shiptag">Approval Code: ${requestScope.header.approvalCode}</span>
+                </c:if>
             </td>
+
         </tr>
         <tr>
             <td colspan="2" class="td body1">
@@ -108,7 +114,7 @@
                             <div class="div tableheader">SALES ORDER NUMBER</div>
                             <div class="div tablebody">${requestScope.header.salesOrder}</div>
                         </td>
-                            <td>
+                        <td>
                             <div class="div tableheader">BILL OF LADING</div>
                             <div class="div tablebody">${requestScope.header.billOfLading}</div>
                         </td>
@@ -135,47 +141,50 @@
             <td colspan="3">
                 <table class="table table-linetable">
                     <tr class="tr divide">
-                        <th>PARTNUMBER</th>
-                        <th>DESCRIPTION</th>
-                        <th>ORDERED</th>
-                        <th>SHIPPED</th>
-                        <th>UNITPRICE</th>
-                        <th>DISCOUNT</th>
-                        <th>EXTENSION</th>
+                        <td class="td head" width="50%">PARTNUMBER DESCRIPTION</td>
+                        <td align="center" class="td head">QTY SHIPPED</td>
+                        <td align="center" class="td head">UNIT PRICE</td>
+                        <td align="center" class="td head">DISCOUNT</td>
+                        <td align="center" class="td head">EXTENSION</td>
                     </tr>
                     <c:forEach items="${requestScope.lines}" var="lineWrapper">
                         <c:if test="${!empty lineWrapper.configLine}">
                             <tr>
-                                <td><b>Header of Mulled Unit</b></td>
-                                <td><b>${lineWrapper.configLine.lineDesc}</b></td>
-                                <td align="center"><b>${lineWrapper.configLine.orderQty}</b></td>
+                                <td WIDTH="50%"><b>${lineWrapper.configLine.lineDesc}</b></td>
                                 <td align="center"><b>${lineWrapper.configLine.shippedQty}</b></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td align="center"></td>
+                                <td align="center"></td>
+                                <td align="center"></td>
                             </tr>
                         </c:if>
                         <c:forEach items="${lineWrapper.lines}" var="line">
                             <tr>
-                                <td>${line.partNumber}</td>
-                                <td>${line.lineDesc}<br>${line.size}</td>
-                                <td align="center">${line.orderQty}</td>
+                                    <%--indent when mulled unit--%>
+                                <c:choose>
+                                    <c:when test="${!empty lineWrapper.configLine}">
+                                        <td WIDTH="50%" style="padding-left: 20px">${line.lineDesc}<br/>${line.size}
+                                        </td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td WIDTH="50%">${line.lineDesc}<br/>${line.size}</td>
+                                    </c:otherwise>
+                                </c:choose>
                                 <td align="center">${line.shippedQty}</td>
                                 <td align="center">${line.unitPrice}</td>
-                                <td align="center">${line.discount}</td>
+                                <td align="center"></td>
                                 <td align="center">${line.extensionPrice}</td>
                             </tr>
                         </c:forEach>
                         <tr class="tr divide">
-                            <td colspan="7"></td>
+                            <td colspan="5"></td>
                         </tr>
                     </c:forEach>
 
-                        <tr>
-                            <td colspan="4"></td>
-                            <td colspan="2"><b>Total Price:</b></td>
-                            <td><b>${requestScope.header.invoiceTotal}</b></td>
-                        </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2"><b>INVOICE TOTAL:</b></td>
+                        <td align="center"><b>${requestScope.header.invoiceTotal}</b></td>
+                    </tr>
 
                 </table>
             </td>

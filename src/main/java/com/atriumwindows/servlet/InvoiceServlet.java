@@ -41,6 +41,10 @@ public class InvoiceServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        response.sendRedirect("/index.jsp");
+        if(request.getParameter("invoice") == null || request.getParameter("invoice") == "") {
+            response.sendRedirect("/index.jsp");
+            return;
+        }
+        doPost(request, response);
     }
 }
