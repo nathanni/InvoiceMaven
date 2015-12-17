@@ -5,17 +5,19 @@
   Time: 9:43 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@include file="/WEB-INF/commons/common.jsp"%>
 <html>
 <head>
-<%@include file="/WEB-INF/commons/common.jsp"%>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Invoice</title>
 </head>
 <body>
+
+
 <div class="container">
     <table class="table">
         <tr>
-            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="100"/>
+            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
             </td>
             <td class="td remit">
                 <div class="div remit head">REMIT TO:</div>
@@ -50,12 +52,12 @@
         </tr>
         <tr>
             <td class="td zeropadding" colspan="2">
-                <span class="span shiptag">TO</span>
+                <span class="span shiptag">&nbsp;TO&nbsp;</span>
             </td>
             <td class="td zeropadding">
-                <span class="span shiptag">SHIP TO</span>
+                <span class="span shiptag">&nbsp;SHIP TO&nbsp;</span>
                 <c:if test="${!empty requestScope.header.approvalCode}">
-                    <span class="span shiptag">Approval Code: ${requestScope.header.approvalCode}</span>
+                    <span class="span shiptag">&nbsp;Approval Code: ${requestScope.header.approvalCode}&nbsp;</span>
                 </c:if>
             </td>
 
@@ -162,11 +164,11 @@
                                     <%--indent when mulled unit--%>
                                 <c:choose>
                                     <c:when test="${!empty lineWrapper.configLine}">
-                                        <td WIDTH="50%" style="padding-left: 20px">${line.lineDesc}<br/>${line.size}
+                                        <td WIDTH="50%" style="padding-left: 20px">${line.lineDesc}<br>${line.size}
                                         </td>
                                     </c:when>
                                     <c:otherwise>
-                                        <td WIDTH="50%">${line.lineDesc}<br/>${line.size}</td>
+                                        <td WIDTH="50%">${line.lineDesc}<br>${line.size}</td>
                                     </c:otherwise>
                                 </c:choose>
                                 <td align="center">${line.shippedQty}</td>

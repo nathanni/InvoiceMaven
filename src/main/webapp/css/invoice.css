@@ -1,4 +1,8 @@
 
+/*CONTAINER DISPLAY*/
+.container {
+    width: 800px;
+}
 
 
 /*MODIFY BOOTSTRAP TABLE*/
@@ -7,18 +11,10 @@
     border-top: none !important;
 }
 
-/*MAKE BORDER SOLID*/
-.table-mybordered {
-    border: solid;
-    border-width: 1px;
-}
-
 /*TABLE BOTTOM MARGIN*/
 .table{
     margin: 0px;
 }
-
-
 
 
 
@@ -116,6 +112,14 @@
 
 
 /*4 MID HEADER*/
+
+
+/*MID TABLE MAKE BORDER SOLID*/
+.table-mybordered {
+    border: solid;
+    border-width: 1px;
+}
+
 /*MAIN TABLE HEADER*/
 .div.tableheader{
     font-size: x-small;
@@ -146,6 +150,8 @@
 
 
 
+
+
 /*LINE TABLE*/
 /*LINE TABLE BORDER*/
 .table-linetable {
@@ -153,11 +159,11 @@
     border-width: 1px;
 }
 
+
 /*LINE TABLE TH*/
 .table-linetable td.head {
     font-size: xx-small;
     font-weight: bold;
-
 }
 /*LINE TABLE HEADER DIVIDE*/
 .table-linetable tr.divide {

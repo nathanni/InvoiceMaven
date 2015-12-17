@@ -1,0 +1,40 @@
+@media print {
+    /*size: 8.5in 11in;*/
+    @page {
+        size: letter;
+        margin-top: 0.3in;
+        margin-left: 0.1in;
+        margin-right: 0.1in;
+        margin-bottom: 0.3in;
+    }
+
+    /*CONTAINER DISPLAY*/
+    .container {
+        width: 100%;
+    }
+
+
+    /*HEADER LINE*/
+    /*ATRIUM LOGO TD WIDTH*/
+    .td.logo {
+        width: 32%;
+    }
+
+    /*REMIT TD WIDTH*/
+    .td.remit {
+        width: 24%;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
