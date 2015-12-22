@@ -5,7 +5,7 @@
   Time: 9:43 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="/WEB-INF/commons/common.jsp"%>
+<%@include file="/WEB-INF/commons/common.jsp" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -141,21 +141,52 @@
         </tr>
         <tr>
             <td colspan="3">
-                <table class="table table-linetable">
-                    <tr class="tr divide">
-                        <td class="td head" width="50%">PARTNUMBER DESCRIPTION</td>
-                        <td align="center" class="td head">QTY SHIPPED</td>
-                        <td align="center" class="td head">UNIT PRICE</td>
-                        <td align="center" class="td head">DISCOUNT</td>
-                        <td align="center" class="td head">EXTENSION</td>
+
+                <%--HEADER--%>
+                <table class="table table-linetable-header">
+                    <colgroup>
+                        <col class="t10">
+                        <col class="t20">
+                        <col class="t30">
+                        <col class="t40">
+                        <col class="t50">
+                    </colgroup>
+                    <tr>
+                        <td class="td head" width="50%" style="padding-left: 7px">PARTNUMBER DESCRIPTION</td>
+                        <td class="td head" align="center">QTY SHIPPED</td>
+                        <td class="td head" align="center">UNIT PRICE</td>
+                        <td class="td head" align="center">DISCOUNT</td>
+                        <td class="td head" align="center">EXTENSION</td>
                     </tr>
-                    <c:forEach items="${requestScope.lines}" var="lineWrapper">
+                </table>
+
+
+                <%--LINE--%>
+                <c:forEach items="${requestScope.lines}" var="lineWrapper">
+
+                    <%--table to divide--%>
+                    <table width="100%" border="0" cellspacing="0" height="4px" cellpadding="0"
+                           style="border:#FFFFFF thin dotted">
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+
+
+                    <table class="table table-linetable">
+                        <colgroup>
+                            <col class="t10">
+                            <col class="t20">
+                            <col class="t30">
+                            <col class="t40">
+                            <col class="t50">
+                        </colgroup>
                         <c:if test="${!empty lineWrapper.configLine}">
                             <tr>
-                                <td WIDTH="50%"><b>${lineWrapper.configLine.lineDesc}</b></td>
+                                <td><b>${lineWrapper.configLine.lineDesc}</b></td>
                                 <td align="center"><b>${lineWrapper.configLine.shippedQty}</b></td>
                                 <td align="center"></td>
-                                <td align="center"></td>
+                                <td></td>
                                 <td align="center"></td>
                             </tr>
                         </c:if>
@@ -164,31 +195,48 @@
                                     <%--indent when mulled unit--%>
                                 <c:choose>
                                     <c:when test="${!empty lineWrapper.configLine}">
-                                        <td WIDTH="50%" style="padding-left: 20px">${line.lineDesc}<br>${line.size}
+                                        <td style="padding-left: 20px">${line.lineDesc}<br>${line.size}
                                         </td>
                                     </c:when>
                                     <c:otherwise>
-                                        <td WIDTH="50%">${line.lineDesc}<br>${line.size}</td>
+                                        <td>${line.lineDesc}<br>${line.size}</td>
                                     </c:otherwise>
                                 </c:choose>
                                 <td align="center">${line.shippedQty}</td>
                                 <td align="center">${line.unitPrice}</td>
-                                <td align="center"></td>
+                                <td></td>
                                 <td align="center">${line.extensionPrice}</td>
                             </tr>
                         </c:forEach>
-                        <tr class="tr divide">
-                            <td colspan="5"></td>
-                        </tr>
-                    </c:forEach>
+                    </table>
+                </c:forEach>
 
+                <%--table to divide--%>
+                <table width="100%" border="0" cellspacing="0" height="4px" cellpadding="0"
+                       style="border:#FFFFFF thin dotted">
                     <tr>
-                        <td colspan="2"></td>
+                        <td></td>
+                    </tr>
+                </table>
+
+
+                <%--INVOICE TOTAL--%>
+                <table class="table table-linetable">
+                    <colgroup>
+                        <col class="t10">
+                        <col class="t20">
+                        <col class="t30">
+                        <col class="t40">
+                        <col class="t50">
+                    </colgroup>
+                    <tr>
+                        <td></td>
+                        <td></td>
                         <td colspan="2"><b>INVOICE TOTAL:</b></td>
                         <td align="center"><b>${requestScope.header.invoiceTotal}</b></td>
                     </tr>
-
                 </table>
+
             </td>
         </tr>
 

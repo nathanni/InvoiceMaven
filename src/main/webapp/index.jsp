@@ -8,7 +8,7 @@
 <body>
 
 
-<div class="container">
+<div class="container" style="width: 800px">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <div class="panel-title" align="left">Invoice History</div>

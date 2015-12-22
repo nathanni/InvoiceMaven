@@ -8,12 +8,6 @@
         margin-bottom: 0.3in;
     }
 
-    /*CONTAINER DISPLAY*/
-    .container {
-        width: 100%;
-    }
-
-
     /*HEADER LINE*/
     /*ATRIUM LOGO TD WIDTH*/
     .td.logo {
@@ -24,7 +18,6 @@
     .td.remit {
         width: 24%;
     }
-
 
 
 }

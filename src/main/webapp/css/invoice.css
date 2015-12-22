@@ -1,8 +1,5 @@
 
-/*CONTAINER DISPLAY*/
-.container {
-    width: 800px;
-}
+
 
 
 /*MODIFY BOOTSTRAP TABLE*/
@@ -153,24 +150,25 @@
 
 
 /*LINE TABLE*/
-/*LINE TABLE BORDER*/
+/*LINE TABLE  HEADER BORDER*/
+.table-linetable-header {
+    border: solid;
+    border-width: 1px;
+}
+
+/*LINE TABLE TH*/
+.table-linetable-header td.head {
+    font-size: xx-small;
+    font-weight: bold;
+    padding: 1px;
+}
+
+/*LINE TABLE */
 .table-linetable {
     border: solid;
     border-width: 1px;
 }
 
-
-/*LINE TABLE TH*/
-.table-linetable td.head {
-    font-size: xx-small;
-    font-weight: bold;
-}
-/*LINE TABLE HEADER DIVIDE*/
-.table-linetable tr.divide {
-    border-bottom: solid;
-    border-width: 1px;
-
-}
 
 /*LINE TABLE TD*/
 .table-linetable td{
@@ -178,6 +176,17 @@
 }
 
 
+/*COLUMN GROUP*/
+.t10    { width:50% }
+.t20    { width:13% }
+.t30    { width:13% }
+.t40    { width:11% }
+.t50    { width:13% }
+
+/*NOT TO BREAK LINE WHEN PRINTING OR TOPDF*/
+table, tr, td, th, tbody, thead, tfoot{
+    page-break-inside: avoid !important;
+}
 
 
 
