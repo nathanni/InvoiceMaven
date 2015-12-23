@@ -15,4 +15,9 @@ public class TestHeaderDAO {
     System.out.println(headerDao.getHeaderByInovice("05000001"));
   }
 
+  @Test
+  public void testGetInvoiceDate() {
+    System.out.println(headerDao.getInvoiceDate("05000001"));
+  }
+
 }

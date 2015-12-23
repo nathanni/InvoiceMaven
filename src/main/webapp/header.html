@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/invoice.css">
+    <link rel="stylesheet" media="print" href="css/print.css">
+    <script type="text/javascript">
+        var pdfInfo = {};
+        var x = document.location.search.substring(1).split('&');
+        for (var i in x) { var z = x[i].split('=',2); pdfInfo[z[0]] = unescape(z[1]); }
+        function getPdfInfo() {
+            var pageCurrent = pdfInfo.page || 1;
+            var pageCount = pdfInfo.topage || 1;
+            var page = pageCurrent + " / " + pageCount;
+            var invoice = pdfInfo.invoice || 0;
+            var date = pdfInfo.date || "01/01/1990";
+            document.getElementById('pdfkit_invoice').textContent = invoice;
+            document.getElementById('pdfkit_date').textContent = date;
+            document.getElementById('pdfkit_page').textContent = page;
+        }
+    </script>
+</head>
+<body onload="getPdfInfo()">
+<div class="container" id="header">
+    <table class="table">
+        <tr>
+            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
+            </td>
+            <td class="td remit">
+                <div class="div remit head">REMIT TO:</div>
+                <div class="div remit text">
+                    <div>C/O Bank of America Lockbox.</div>
+                    <div>P.O. Box 404581</div>
+                    <div>Atlanta, GA 30384-4581</div>
+                    <div>336/764-6400</div>
+                    <div>FAX 336/764-1501</div>
+                </div>
+            </td>
+            <td class="td invoice">
+                <div class="div invoice head">INVOICE</div>
+                <div>
+                    <table class="table-mybordered" width="100%">
+                        <td>
+                            <div class="div invoice tableheader">INVOICE NUMBER</div>
+                            <div class="div invoice tablebody"><p id="pdfkit_invoice"></p></div>
+                        </td>
+                        <td>
+                            <div class="div invoice tableheader">DATE</div>
+                            <div class="div invoice tablebody"><p id="pdfkit_date"></p></div>
+                        </td>
+                        <td>
+                            <div class="div invoice tableheader">PAGE</div>
+                                <div class="div invoice tablebody"><p id="pdfkit_page"></p></div>
+                        </td>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>

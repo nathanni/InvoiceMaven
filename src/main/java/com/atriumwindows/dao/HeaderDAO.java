@@ -7,5 +7,7 @@ public interface HeaderDAO {
   Header getHeaderByInovice(String invoice);
 
   Boolean setOrdermasterInfo(Header header);
+
+  String getInvoiceDate(String invoice);
   
 }

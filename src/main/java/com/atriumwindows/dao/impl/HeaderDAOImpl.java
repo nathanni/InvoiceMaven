@@ -45,5 +45,11 @@ public class HeaderDAOImpl extends DAOImpl<Header> implements HeaderDAO {
         return true;
     }
 
+    @Override
+    public String getInvoiceDate(String invoice) {
+        String sql = "SELECT to_char(invoice_date,'MM/dd/yyyy') FROM dts_arimaster WHERE invoice = ? AND rownum = 1";
+        return this.getForValue(sql,invoice);
+    }
+
 
 }

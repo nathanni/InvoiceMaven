@@ -16,40 +16,44 @@
 
 <div class="container">
     <table class="table">
-        <tr>
-            <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
-            </td>
-            <td class="td remit">
-                <div class="div remit head">REMIT TO:</div>
-                <div class="div remit text">
-                    <div>C/O Bank of America Lockbox.</div>
-                    <div>P.O. Box 404581</div>
-                    <div>Atlanta, GA 30384-4581</div>
-                    <div>336/764-6400</div>
-                    <div>FAX 336/764-1501</div>
-                </div>
-            </td>
-            <td class="td invoice">
-                <div class="div invoice head">INVOICE</div>
-                <div>
-                    <table class="table-mybordered" width="100%">
-                        <td>
-                            <div class="div invoice tableheader">INVOICE NUMBER</div>
-                            <div class="div invoice tablebody">${requestScope.header.invoice}</div>
-                        </td>
-                        <td>
-                            <div class="div invoice tableheader">DATE</div>
-                            <div class="div invoice tablebody"><fmt:formatDate
-                                    value="${requestScope.header.invoiceDate}" pattern="MM/dd/yyyy"/></div>
-                        </td>
-                        <td>
-                            <div class="div invoice tableheader">PAGE</div>
-                            <div class="div invoice tablebody">1</div>
-                        </td>
-                    </table>
-                </div>
-            </td>
-        </tr>
+
+        <%--if from get(pdf side) hide header--%>
+        <c:if test="${empty requestScope.getPage}">
+            <tr>
+                <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
+                </td>
+                <td class="td remit">
+                    <div class="div remit head">REMIT TO:</div>
+                    <div class="div remit text">
+                        <div>C/O Bank of America Lockbox.</div>
+                        <div>P.O. Box 404581</div>
+                        <div>Atlanta, GA 30384-4581</div>
+                        <div>336/764-6400</div>
+                        <div>FAX 336/764-1501</div>
+                    </div>
+                </td>
+                <td class="td invoice">
+                    <div class="div invoice head">INVOICE</div>
+                    <div>
+                        <table class="table-mybordered" width="100%">
+                            <td>
+                                <div class="div invoice tableheader">INVOICE NUMBER</div>
+                                <div class="div invoice tablebody">${requestScope.header.invoice}</div>
+                            </td>
+                            <td>
+                                <div class="div invoice tableheader">DATE</div>
+                                <div class="div invoice tablebody"><fmt:formatDate
+                                        value="${requestScope.header.invoiceDate}" pattern="MM/dd/yyyy"/></div>
+                            </td>
+                            <td>
+                                <div class="div invoice tableheader">PAGE</div>
+                                <div class="div invoice tablebody">1</div>
+                            </td>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </c:if>
         <tr>
             <td class="td zeropadding" colspan="2">
                 <span class="span shiptag">&nbsp;TO&nbsp;</span>
