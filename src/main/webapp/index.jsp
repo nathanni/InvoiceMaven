@@ -16,7 +16,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="/invoice" method="post" role="form" data-toggle="validator">
+                    <form action="invoice" method="post" role="form" data-toggle="validator">
                         <div class="form-group has-feedback">
                             <label for="inputInvoice" class="control-label">Invoice</label>
                             <div class="input-group">

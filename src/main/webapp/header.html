@@ -14,9 +14,9 @@
             var pageCount = pdfInfo.topage || 1;
             var page = pageCurrent + " / " + pageCount;
             var invoice = pdfInfo.invoice || 0;
-            var date = pdfInfo.date || "01/01/1990";
+            var invoiceDate = pdfInfo.invoiceDate || "01/01/1990";
             document.getElementById('pdfkit_invoice').textContent = invoice;
-            document.getElementById('pdfkit_date').textContent = date;
+            document.getElementById('pdfkit_invoiceDate').textContent = invoiceDate;
             document.getElementById('pdfkit_page').textContent = page;
         }
     </script>
@@ -47,7 +47,7 @@
                         </td>
                         <td>
                             <div class="div invoice tableheader">DATE</div>
-                            <div class="div invoice tablebody"><p id="pdfkit_date"></p></div>
+                            <div class="div invoice tablebody"><p id="pdfkit_invoiceDate"></p></div>
                         </td>
                         <td>
                             <div class="div invoice tableheader">PAGE</div>
