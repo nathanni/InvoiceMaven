@@ -1,6 +1,6 @@
 package com.atriumwindows.pdf;
 
-import com.atriumwindows.utils.ToPDFproperties;
+import com.atriumwindows.utils.ToPDFProperties;
 
 /**
  * Created by nni on 1/7/2016.
@@ -23,11 +23,13 @@ public class ToPDF {
 
     //get properties loaded
     static {
-        ToPDFproperties properties = ToPDFproperties.getInstance();
+        ToPDFProperties properties = ToPDFProperties.getInstance();
 
         programPath = properties.getProperty("programpath");
         savePath = properties.getProperty("savepath");
         tempPath = properties.getProperty("temppath");
+        
+        pathValidate();
 
         String serverPath = properties.getProperty("serverpath");
         servletContextPath = serverPath + properties.getProperty("servletcontextpath"); //real path for servlet context
@@ -38,6 +40,10 @@ public class ToPDF {
         sysDefParams = margin + " " + page + " " + shrink; //sys parameters for wkhtmltopdf
     }
 
+    //Validate save path and temp path. try to create if they don't exist.
+    private static void pathValidate() {
+
+    }
 
 
     public String invoiceToPDF(boolean save, String invoice, String invoiceDate) {

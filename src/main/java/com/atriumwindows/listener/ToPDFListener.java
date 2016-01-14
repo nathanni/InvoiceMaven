@@ -2,7 +2,7 @@ package com.atriumwindows.listener; /**
  * Created by Nathan on 1/13/2016.
  */
 
-import com.atriumwindows.utils.ToPDFproperties;
+import com.atriumwindows.utils.ToPDFProperties;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -24,7 +24,7 @@ public class ToPDFListener implements ServletContextListener {
     // -------------------------------------------------------
     public void contextInitialized(ServletContextEvent sce) {
         //load Servlet Context Path
-        ToPDFproperties.getInstance().addProperty("servletcontextpath", sce.getServletContext().getContextPath());
+        ToPDFProperties.getInstance().addProperty("servletcontextpath", sce.getServletContext().getContextPath());
 
         InputStream in = getClass().getClassLoader().getResourceAsStream("topdf.properties");
         Properties properties = new Properties();
@@ -34,7 +34,7 @@ public class ToPDFListener implements ServletContextListener {
             for (Map.Entry prop : properties.entrySet()) {
                 String propertyName = (String) prop.getKey();
                 String propertyValue = (String) prop.getValue();
-                ToPDFproperties.getInstance().addProperty(propertyName, propertyValue);
+                ToPDFProperties.getInstance().addProperty(propertyName, propertyValue);
             }
 
         } catch (IOException e) {

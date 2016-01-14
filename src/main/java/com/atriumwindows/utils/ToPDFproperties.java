@@ -6,16 +6,16 @@ import java.util.Map;
 /**
  * Created by nni on 1/7/2016.
  */
-public class ToPDFproperties {
+public class ToPDFProperties {
 
     //Singleton, encapsulate properties by com.atriumwindows.listener.ToPDFListener
     private Map<String, String> properties = new HashMap<>();
 
-    private ToPDFproperties(){}
+    private ToPDFProperties(){}
 
-    private static final ToPDFproperties instance = new ToPDFproperties();
+    private static final ToPDFProperties instance = new ToPDFProperties();
 
-    public static ToPDFproperties getInstance() {
+    public static ToPDFProperties getInstance() {
         return instance;
     }
 

@@ -7,11 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Method;
 
 /**
- * ToPDF Servlet API
+ * ToPDF Servlet WEB API
  * Created by Nathan on 1/14/2016.
  */
 @WebServlet(name = "ToPDFServlet", urlPatterns = {"*.do"})
@@ -64,8 +64,25 @@ public class ToPDFServlet extends HttpServlet {
 
     private void downloadFile(HttpServletRequest request, HttpServletResponse response, String filename) throws ServletException, IOException {
         if(filename != null) {
-            request.setAttribute("filename", filename);
-            request.getRequestDispatcher("/download").forward(request,response);
+            File file = new File(filename);
+            try {
+                InputStream fis = new BufferedInputStream(new FileInputStream(file));
+                byte[] buffer = new byte[fis.available()];
+                fis.read(buffer);
+                fis.close();
+                response.reset();
+                response.addHeader("Content-Disposition", "attachment;filename=" + new String(file.getName().getBytes()));
+                response.addHeader("Content-Length", "" + file.length());
+                OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+                response.setContentType("application/pdf");
+                toClient.write(buffer);
+                toClient.flush();
+                toClient.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                file.delete(); //delete temp file
+            }
         }
     }
 }
