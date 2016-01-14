@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class ToPDFProperties {
 
-    //Singleton, encapsulate properties by com.atriumwindows.listener.ToPDFListener
+    //Singleton, encapsulate properties by com.atriumwindows.listener.AppListener
     private Map<String, String> properties = new HashMap<>();
 
     private ToPDFProperties(){}

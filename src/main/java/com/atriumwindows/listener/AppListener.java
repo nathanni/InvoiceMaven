@@ -13,16 +13,20 @@ import java.util.Map;
 import java.util.Properties;
 
 @WebListener()
-public class ToPDFListener implements ServletContextListener {
+public class AppListener implements ServletContextListener {
 
     // Public constructor is required by servlet spec
-    public ToPDFListener() {
+    public AppListener() {
     }
 
     // -------------------------------------------------------
     // ServletContextListener implementation
     // -------------------------------------------------------
     public void contextInitialized(ServletContextEvent sce) {
+
+        //Get real path, set rootPath as a system property for LOG4J
+        System.setProperty("rootPath", sce.getServletContext().getRealPath("/"));
+
         //load Servlet Context Path
         ToPDFProperties.getInstance().addProperty("servletcontextpath", sce.getServletContext().getContextPath());
 

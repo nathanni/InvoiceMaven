@@ -83,6 +83,8 @@ public class ToPDFServlet extends HttpServlet {
             } finally {
                 file.delete(); //delete temp file
             }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/pdferror.html");
         }
     }
 }

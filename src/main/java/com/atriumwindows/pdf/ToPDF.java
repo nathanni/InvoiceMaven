@@ -1,6 +1,8 @@
 package com.atriumwindows.pdf;
 
 import com.atriumwindows.utils.ToPDFProperties;
+import org.apache.log4j.Logger;
+import java.io.File;
 
 /**
  * Created by nni on 1/7/2016.
@@ -14,6 +16,8 @@ public class ToPDF {
         return instance;
     }
 
+    private static Logger logger;
+
     private static String savePath;
     private static String tempPath;
     private static String programPath;
@@ -24,12 +28,14 @@ public class ToPDF {
     //get properties loaded
     static {
         ToPDFProperties properties = ToPDFProperties.getInstance();
+        logger = Logger.getLogger(ToPDF.class);
 
         programPath = properties.getProperty("programpath");
         savePath = properties.getProperty("savepath");
         tempPath = properties.getProperty("temppath");
-        
-        pathValidate();
+
+        pathValidate(savePath);
+        pathValidate(tempPath);
 
         String serverPath = properties.getProperty("serverpath");
         servletContextPath = serverPath + properties.getProperty("servletcontextpath"); //real path for servlet context
@@ -41,8 +47,17 @@ public class ToPDF {
     }
 
     //Validate save path and temp path. try to create if they don't exist.
-    private static void pathValidate() {
-
+    private static void pathValidate(String path) {
+        File file = new File(path);
+        if(!file.exists() && !file.isDirectory()) {
+            if(file.mkdirs()) {
+                logger.warn("Path doesn't exist, system will create this folder automatically.");
+                logger.warn("Folder is created: " + file.getPath());
+            } else {
+                logger.error("System is trying to create folder");
+                logger.error("Error, the folder can't be created due to some reasons: " + file.getPath());
+            }
+        }
     }
 
 

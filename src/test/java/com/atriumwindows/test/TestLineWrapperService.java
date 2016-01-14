@@ -15,9 +15,11 @@ public class TestLineWrapperService {
 
   public void test() {
     List<LineWrapper> lineWrappers = lineWrapperService.getLineWrapperList("05000001");
-    
-    for(LineWrapper lineWrapper: lineWrappers) {
-      System.out.println(lineWrapper);
+
+    if(lineWrappers != null) {
+      for (LineWrapper lineWrapper : lineWrappers) {
+        System.out.println(lineWrapper);
+      }
     }
   }
 }
