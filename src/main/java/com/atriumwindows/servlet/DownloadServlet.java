@@ -18,26 +18,23 @@ public class DownloadServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String path = request.getParameter("filename");
-        System.out.println(path);
-        try  {
-            File file  =   new  File(path);
-            String filename  =  file.getName();
-            String ext  =  filename.substring(filename.lastIndexOf( " . " )  +   1 ).toUpperCase();
+        String filename = (String) request.getAttribute("filename");
+        try {
+            File file = new File(filename);
 
-            InputStream fis  =   new BufferedInputStream( new FileInputStream(path));
-            byte [] buffer  =   new   byte [fis.available()];
+            InputStream fis = new BufferedInputStream(new FileInputStream(file));
+            byte[] buffer = new byte[fis.available()];
             fis.read(buffer);
             fis.close();
             response.reset();
-            response.addHeader( " Content-Disposition " ,  " attachment;filename= "   +   new  String(filename.getBytes()));
-            response.addHeader( " Content-Length " ,  ""   +  file.length());
-            OutputStream toClient  =   new BufferedOutputStream(response.getOutputStream());
-            response.setContentType( "application/pdf" );
+            response.addHeader("Content-Disposition", "attachment;filename=" + new String(file.getName().getBytes()));
+            response.addHeader("Content-Length", "" + file.length());
+            OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+            response.setContentType("application/pdf");
             toClient.write(buffer);
             toClient.flush();
             toClient.close();
-        }  catch  (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

@@ -62,45 +62,40 @@ public class ToPDF {
 
     public String uriToPDF(String uri) {
 
-        if(uri == null || uri.isEmpty()) return null;
-
         //hopefully this stops the program accessing local files.
         if(! (uri.startsWith("http://") || uri.startsWith("https://"))  ){
             uri = "http://" + uri;
         }
 
-
         String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
 
-        runWkHTMLtoPDF(null, uri, outputFile);
+        if(runWkHTMLtoPDF(null, uri, outputFile) == 0) {
+            return outputFile;
+        }
 
-        downloadFile(outputFile);
-
-        return outputFile;
-
-    }
-
-    private void downloadFile(String outputFile) {
-        System.out.println("downloading");
-
+        return null;
 
     }
 
-    private Process runWkHTMLtoPDF(String params, String uri, String outputFile) {
+
+    //return value: 0 indicates normal termination
+    private int runWkHTMLtoPDF(String params, String uri, String outputFile) {
         Runtime rt = Runtime.getRuntime();
         Process p = null;
+        int status = Integer.MIN_VALUE;
 
         try {
             if(params == null )
                 p = rt.exec(programPath + " " + sysDefParams + " " + uri + " " + outputFile);
             else
                 p = rt.exec(programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
+            status = p.waitFor();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return p;
+        return status;
     }
 
 

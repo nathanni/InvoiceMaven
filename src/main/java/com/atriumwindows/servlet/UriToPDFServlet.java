@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
 
 /**
  * Servlet API to convert URI to PDF
@@ -26,11 +26,18 @@ public class UriToPDFServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String uri = request.getParameter("uri");
+
+        //validate uri
+        if(uri == null || uri.isEmpty()) return;
+
         ToPDF toPDF = ToPDF.getInstance();
         String filename = toPDF.uriToPDF(uri);
-        request.setAttribute("filename",filename );
-        request.getRequestDispatcher("/downloadtest.jsp").forward(request,response);
 
+        if(filename != null) {
+            request.setAttribute("filename", filename);
+            request.getRequestDispatcher("/download").forward(request,response);
+        }
+        return;
 
     }
 }

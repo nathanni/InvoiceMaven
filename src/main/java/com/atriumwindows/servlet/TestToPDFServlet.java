@@ -24,8 +24,11 @@ public class TestToPDFServlet extends HttpServlet {
         ToPDF toPDF = ToPDF.getInstance();
         String invoice = request.getParameter("invoice");
         String filename = toPDF.invoiceToPDF(true, invoice, "20101010");
-        request.setAttribute("filename",filename );
-        request.getRequestDispatcher("/downloadtest.jsp").forward(request,response);
+        if(filename != null) {
+            request.setAttribute("filename", filename);
+            request.getRequestDispatcher("/download").forward(request,response);
+        }
+        return;
 
     }
 }
