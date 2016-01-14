@@ -40,23 +40,25 @@ public class ToPDF {
 
 
 
-    public String invoiceToPDF(boolean save, String invoice, String date) {
+    public String invoiceToPDF(boolean save, String invoice, String invoiceDate) {
 
 
         String uri = servletContextPath+ "/invoice?invoice=" + invoice;
         String outputFile;
-        String params = "--header-html " + servletContextPath +  "/header.html?invoice=" + invoice + "&invoiceDate=" + date;
+        String params = "--header-html " + servletContextPath +  "/header.html?invoice=" + invoice + "&invoiceDate=" + invoiceDate;
 
         if(save) {
             outputFile = savePath + "Invoice" + invoice + "Time" + System.currentTimeMillis() + ".pdf";
-            runWkHTMLtoPDF(params,uri,outputFile);
         } else {
+            //better to put temporary file in temp path
             outputFile = tempPath + "invoiceTemp" + invoice + "Time" + System.currentTimeMillis() + ".pdf";
         }
 
-        return outputFile;
+        if (executeCmd(uri, outputFile, params)) return outputFile;
 
+        return null;
     }
+
 
 
 
@@ -69,9 +71,7 @@ public class ToPDF {
 
         String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
 
-        if(runWkHTMLtoPDF(null, uri, outputFile) == 0) {
-            return outputFile;
-        }
+        if (executeCmd(uri, outputFile, null)) return outputFile;
 
         return null;
 
@@ -98,8 +98,13 @@ public class ToPDF {
         return status;
     }
 
-
-
+    //return boolean value which indicates if the command is excuted successfully
+    private boolean executeCmd(String uri, String outputFile, String params) {
+        if(runWkHTMLtoPDF(params,uri,outputFile) == 0) {
+            return true;
+        }
+        return false;
+    }
 
 
 

@@ -8,6 +8,7 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
+/src/main/resources/topdf.properties
 .mvn/timing.properties
 /InvoiceMaven.iml
 *.iml

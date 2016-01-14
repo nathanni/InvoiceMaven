@@ -15,10 +15,25 @@
 
 
 <div class="container">
+
+
+
     <table class="table">
 
-        <%--if from get(pdf side) hide header--%>
-        <c:if test="${empty requestScope.getPage}">
+        <%--if from get(pdf side) method,  hide header--%>
+        <c:if test="${empty requestScope.hideHeader}">
+            <div class="panel-heading">
+
+                <div class="panel-title" align="right">
+                    <a href="index.jsp" class="btn btn-default" role="button" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </a>
+                    <a href="invoicetopdf.do?invoice=${requestScope.header.invoice}&invoicedate=${requestScope.header.invoiceDate}">
+                        <button type="button" class="btn btn-success"
+                                href=>Download PDF</button>
+                    </a>
+                </div>
+            </div>
             <tr>
                 <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
                 </td>

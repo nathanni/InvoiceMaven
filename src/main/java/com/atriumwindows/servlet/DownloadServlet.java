@@ -19,9 +19,8 @@ public class DownloadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String filename = (String) request.getAttribute("filename");
+        File file = new File(filename);
         try {
-            File file = new File(filename);
-
             InputStream fis = new BufferedInputStream(new FileInputStream(file));
             byte[] buffer = new byte[fis.available()];
             fis.read(buffer);
@@ -36,6 +35,8 @@ public class DownloadServlet extends HttpServlet {
             toClient.close();
         } catch (IOException ex) {
             ex.printStackTrace();
+        } finally {
+            file.delete(); //delete temp file
         }
     }
 }

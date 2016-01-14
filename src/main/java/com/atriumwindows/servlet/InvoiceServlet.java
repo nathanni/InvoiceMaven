@@ -45,7 +45,7 @@ public class InvoiceServlet extends javax.servlet.http.HttpServlet {
             response.sendRedirect("/index.jsp");
             return;
         }
-        request.setAttribute("getPage", true); //this value is for hide header, if the request is from GET(pdf side)
+        request.setAttribute("hideHeader", true); //this value is set for hiding header
         doPost(request, response);
     }
 }
