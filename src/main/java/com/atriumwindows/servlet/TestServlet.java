@@ -1,5 +1,7 @@
 package com.atriumwindows.servlet;
 
+import com.atriumwindows.email.SendEmail;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,6 @@ public class TestServlet extends HttpServlet {
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        SendEmail.getInstance().testP();
     }
 }

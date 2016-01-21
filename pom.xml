@@ -43,16 +43,39 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
     </dependency>
+
+    <!-- the javaee.jar from java.net is not contains any method bodies,
+    but the APIs name only.
+     Which is not suitable to use for running or deploying along with your application.-->
+    <!--<dependency>-->
+      <!--<groupId>javax</groupId>-->
+      <!--<artifactId>javaee-web-api</artifactId>-->
+      <!--<version>6.0</version>-->
+      <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+
+
+    <!--Because scope is provided, it does not affect the artifact to be built.
+    That's why you can use this one also with other application servers than JBoss.
+    It is same API as in your original dependency, but it contains normal classes.-->
     <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-web-api</artifactId>
-      <version>6.0</version>
+      <groupId>org.jboss.spec</groupId>
+      <artifactId>jboss-javaee-6.0</artifactId>
+      <version>1.0.0.Final</version>
+      <type>pom</type>
       <scope>provided</scope>
     </dependency>
+
+
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-email</artifactId>
+      <version>1.4</version>
     </dependency>
   </dependencies>
   <build>
