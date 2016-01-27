@@ -8,6 +8,8 @@ package com.atriumwindows.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //import javax.naming.InitialContext;
@@ -53,6 +55,25 @@ public class DBConnection {
             }
         }
     }
+
+    public static void releaseConnection(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
+        if(resultSet != null) {
+            try {
+                resultSet.close();
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if(preparedStatement != null) {
+            try {
+                preparedStatement.close();
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        releaseConnection(connection);
+    }
+
 
 
 }

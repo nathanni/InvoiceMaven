@@ -15,8 +15,13 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -110,6 +115,39 @@ public class DAOImpl<T> implements DAO<T> {
         } finally {
             DBConnection.releaseConnection(connection);
         }
+    }
+
+    @Override
+    //need to be improved for generic use. current temporary for invoice
+    public List<Map<String, String>> getForMapList(String sql, Object... args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Map<String, String>> lists = new ArrayList<>();
+        try {
+            connection = DBConnection.getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            int index = 1;
+            for(Object s : args) {
+                preparedStatement.setString(index++, (String) s);
+            }
+
+            resultSet = preparedStatement.executeQuery();
+            System.out.println(resultSet);
+
+            while(resultSet.next()) {
+                Map<String, String> map = new HashMap<>();
+                map.put(resultSet.getString(1), resultSet.getString(2));
+                lists.add(map);
+            }
+            return lists;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnection.releaseConnection(connection, preparedStatement, resultSet);
+        }
+        return null;
     }
 
 }

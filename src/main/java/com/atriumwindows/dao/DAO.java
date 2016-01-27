@@ -7,6 +7,7 @@
 package com.atriumwindows.dao;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -22,6 +23,8 @@ public interface DAO<T> {
     <E> E getForValue(String sql, Object... args);
     
     void update(String sql, Object... args);
+
+    List<Map<String, String>> getForMapList(String sql, Object... args);
   
     
 }

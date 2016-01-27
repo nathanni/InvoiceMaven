@@ -9,5 +9,5 @@ public interface HeaderDAO {
   Boolean setOrdermasterInfo(Header header);
 
   String getInvoiceDate(String invoice);
-  
+
 }
