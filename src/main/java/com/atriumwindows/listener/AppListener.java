@@ -2,6 +2,7 @@ package com.atriumwindows.listener; /**
  * Created by Nathan on 1/13/2016.
  */
 
+import com.atriumwindows.job.DailyInvoice;
 import com.atriumwindows.utils.EmailProperties;
 import com.atriumwindows.utils.ToPDFProperties;
 
@@ -10,11 +11,20 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @WebListener()
 public class AppListener implements ServletContextListener {
+
+    private ScheduledExecutorService scheduler;
 
     // Public constructor is required by servlet spec
     public AppListener() {
@@ -35,6 +45,28 @@ public class AppListener implements ServletContextListener {
         loadEmailProperties(sce);
 
 
+        //run task everyday at "jobtime"
+        String jobtime = EmailProperties.getInstance().getProperty("jobtime");
+        scheduler = Executors.newScheduledThreadPool(1);
+        long oneDay = 24 * 60 * 60 * 1000;
+        long initDelay  = getTimeMillis(jobtime) - System.currentTimeMillis();
+        initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
+        scheduler.scheduleAtFixedRate(new DailyInvoice(), initDelay, oneDay, TimeUnit.MILLISECONDS);
+
+
+    }
+
+    //get millis time for specific time
+    private static long getTimeMillis(String time) {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+            DateFormat dayFormat = new SimpleDateFormat("yy-MM-dd");
+            Date curDate = dateFormat.parse(dayFormat.format(new Date()) + " " + time);
+            return curDate.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     private void loadEmailProperties(ServletContextEvent sce) {
@@ -76,7 +108,7 @@ public class AppListener implements ServletContextListener {
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
-
+        scheduler.shutdownNow();
     }
 
 

@@ -1,8 +1,5 @@
 package com.atriumwindows.test;
 
-import org.apache.commons.mail.*;
-import org.junit.Test;
-
 /**
  * Created by nni on 1/21/2016.
  */
@@ -10,7 +7,7 @@ public class TestEmail {
 
 
 
-    @Test
+/*    @Test
     public void test() throws EmailException {
 
         // Create the email message
@@ -47,5 +44,5 @@ public class TestEmail {
 
         // send the email
         email.send();
-    }
+    }*/
 }

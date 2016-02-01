@@ -1,4 +1,4 @@
-package com.atriumwindows.email;
+package com.atriumwindows.pdf;
 
 import com.atriumwindows.utils.EmailProperties;
 import org.apache.commons.mail.EmailAttachment;
@@ -23,26 +23,17 @@ public class SendEmail {
     private static String host;
     private static int port;
     private static String replyTo;
-    private static String message;
 
     static {
         host = EmailProperties.getInstance().getProperty("host");
         port = Integer.parseInt(EmailProperties.getInstance().getProperty("port"));
         replyTo = EmailProperties.getInstance().getProperty("replyto");
-        message = EmailProperties.getInstance().getProperty("message");
     }
 
-    public void testP() {
-        System.out.println(host);
-        System.out.println(port);
-        System.out.println(replyTo);
-    }
 
-    public boolean sendEmail(String toAddr, List<String> attchmentsList, String title) {
+    public boolean sendEmail(String toAddr, List<String> attchmentsList, String title, String message) {
         // Create the email message
-
         try {
-
             //Create the email
             MultiPartEmail email = new MultiPartEmail();
             email.setHostName(host);
@@ -55,11 +46,14 @@ public class SendEmail {
 
             // Create the attachment
             for(String filename:attchmentsList) {
+
+                String invoiceName = filename.substring(filename.lastIndexOf("Invoice"), filename.lastIndexOf('_'));
+
                 EmailAttachment attachment = new EmailAttachment();
                 attachment.setPath(filename);
                 attachment.setDisposition(EmailAttachment.ATTACHMENT);
-                attachment.setDescription("Invoice");
-                attachment.setName("invoice.pdf");
+                attachment.setDescription(invoiceName);
+                attachment.setName(invoiceName + ".pdf");
 
                 // add the attachment
                 email.attach(attachment);
@@ -67,6 +61,9 @@ public class SendEmail {
 
             // send the email
             email.send();
+
+            /*  LOGGER: TO DO */
+
         } catch (EmailException e) {
             e.printStackTrace();
             return false;

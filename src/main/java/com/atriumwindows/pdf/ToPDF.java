@@ -43,7 +43,7 @@ public class ToPDF {
         String margin = properties.getProperty("margin");
         String page = properties.getProperty("page");
         String shrink = properties.getProperty("shrink");
-        sysDefParams = margin + " " + page + " " + shrink; //sys parameters for wkhtmltopdf
+        sysDefParams = shrink + " " + margin + " " + page; //sys parameters for wkhtmltopdf
     }
 
     //Validate save path and temp path. try to create if they don't exist.
@@ -69,10 +69,10 @@ public class ToPDF {
         String params = "--header-html " + servletContextPath +  "/header.html?invoice=" + invoice + "&invoiceDate=" + invoiceDate;
 
         if(save) {
-            outputFile = savePath + "Invoice" + invoice + "Time" + System.currentTimeMillis() + ".pdf";
+            outputFile = savePath + "Invoice" + invoice + "_" + System.currentTimeMillis() + ".pdf";
         } else {
             //better to put temporary file in temp path
-            outputFile = tempPath + "invoiceTemp" + invoice + "Time" + System.currentTimeMillis() + ".pdf";
+            outputFile = tempPath + "invoiceTemp" + invoice + "_" + System.currentTimeMillis() + ".pdf";
         }
 
         if (executeCmd(uri, outputFile, params)) return outputFile;
@@ -111,6 +111,9 @@ public class ToPDF {
             else
                 p = rt.exec(programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
             status = p.waitFor();
+
+            /*  LOGGER: TO DO */
+
 
         } catch (Exception e) {
             e.printStackTrace();

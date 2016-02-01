@@ -44,27 +44,31 @@
       <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
     </dependency>
 
+
+
+    <!--For Deployment-->
     <!-- the javaee.jar from java.net is not contains any method bodies,
     but the APIs name only.
      Which is not suitable to use for running or deploying along with your application.-->
-    <!--<dependency>-->
-      <!--<groupId>javax</groupId>-->
-      <!--<artifactId>javaee-web-api</artifactId>-->
-      <!--<version>6.0</version>-->
-      <!--<scope>provided</scope>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>6.0</version>
+      <scope>provided</scope>
+    </dependency>
 
 
+    <!--For Testing email module-->
     <!--Because scope is provided, it does not affect the artifact to be built.
     That's why you can use this one also with other application servers than JBoss.
     It is same API as in your original dependency, but it contains normal classes.-->
-    <dependency>
-      <groupId>org.jboss.spec</groupId>
-      <artifactId>jboss-javaee-6.0</artifactId>
-      <version>1.0.0.Final</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.jboss.spec</groupId>-->
+      <!--<artifactId>jboss-javaee-6.0</artifactId>-->
+      <!--<version>1.0.0.Final</version>-->
+      <!--<type>pom</type>-->
+      <!--<scope>provided</scope>-->
+    <!--</dependency>-->
 
 
     <dependency>

@@ -2,8 +2,8 @@ package com.atriumwindows.dao;
 
 import com.atriumwindows.domain.Account;
 
+import java.sql.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by nni on 1/27/2016.
@@ -11,8 +11,10 @@ import java.util.Map;
 public interface EmailInvoiceDAO {
 
 
-    List<Account> getAccountsForEmailInovice();
+    List<Account> getAccountsForEmailInvoice(Date date);
 
-    List<Map<String, String>> getInvoiceInfoFromSpecificAccount(String accountId);
+/*    Map<String, String> getInvoiceInfoFromSpecificAccount(String accountId, Date date);*/
+
+    List<String> getInvoicesFromSpecificAccount(String accountId, Date date);
 
 }

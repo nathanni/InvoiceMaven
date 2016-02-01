@@ -1,0 +1,9 @@
+
+Edit Apex 107  - accounting
+
+
+
+index:
+DTS_ARIMASTER INDEX
+invoice_date
+TRIM(custcode)
