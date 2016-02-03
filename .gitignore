@@ -9,6 +9,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 /src/main/resources/topdf.properties
+/src/main/resources/log4j.properties
+/src/main/resources/email.properties
 .mvn/timing.properties
 /InvoiceMaven.iml
 *.iml
