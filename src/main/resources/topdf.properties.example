@@ -1,0 +1,7 @@
+serverpath=http://localhost:8080
+programpath=C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe
+savepath=C:\\Users\\nni\\Desktop\\PDF\\
+temppath=C:\\Users\\nni\\Desktop\\PDF\\temp\\
+margin=-L 1mm -R 1mm
+page=-s Letter
+shrink=--disable-smart-shrinking
