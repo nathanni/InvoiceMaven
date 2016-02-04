@@ -82,11 +82,12 @@
 /*3 ADDRESS*/
 /*"TO" AND "SHIP TO" TAGS*/
 .span.shiptag {
-    border-style: dotted;
+    border-style: none;
     border-width: 1px;
     font-size: x-small;
     font-weight: bold;
-    margin-left: 6px;
+    margin-left: 4px;
+    text-decoration: underline;
 }
 
 /*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY TD*/

@@ -71,12 +71,12 @@
         </c:if>
         <tr>
             <td class="td zeropadding" colspan="2">
-                <span class="span shiptag">&nbsp;TO&nbsp;</span>
+                <span class="span shiptag">TO</span>
             </td>
             <td class="td zeropadding">
-                <span class="span shiptag">&nbsp;SHIP TO&nbsp;</span>
+                <span class="span shiptag">SHIP TO</span>
                 <c:if test="${!empty requestScope.header.approvalCode}">
-                    <span class="span shiptag">&nbsp;Approval Code: ${requestScope.header.approvalCode}&nbsp;</span>
+                    <span class="span shiptag">Approval Code: ${requestScope.header.approvalCode}</span>
                 </c:if>
             </td>
 
