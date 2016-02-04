@@ -19,7 +19,7 @@
             document.getElementById('pdfkit_invoiceDate').textContent = invoiceDate;
             document.getElementById('pdfkit_page').textContent = page;
 
-            if(page == 1) {
+            if(pageCurrent == 1) {
                 document.getElementById("hiddenTr").style.display = "none";
             }
         }
@@ -61,7 +61,7 @@
                 </div>
             </td>
         </tr>
-        <tr id="hiddenTr"><td>AAAAA</td></tr>
+        <tr id="hiddenTr"><td></td></tr>
     </table>
     </div>
 </body>

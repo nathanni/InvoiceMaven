@@ -69,7 +69,7 @@
                 </td>
             </tr>
         </c:if>
-            <tr><td>bbbbb</td></tr>
+            <tr><td></td></tr>
         <tr>
             <td class="td zeropadding" colspan="2">
                 <span class="span shiptag">&nbsp;TO&nbsp;</span>
