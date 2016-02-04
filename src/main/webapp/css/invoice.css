@@ -82,7 +82,7 @@
 /*3 ADDRESS*/
 /*"TO" AND "SHIP TO" TAGS*/
 .span.shiptag {
-    border-style: solid;
+    border-style: dotted;
     border-width: 1px;
     font-size: x-small;
     font-weight: bold;
@@ -184,7 +184,7 @@
 .t50    { width:13% }
 
 /*NOT TO BREAK LINE WHEN PRINTING OR TOPDF*/
-table, tr, td, th, tbody, thead, tfoot{
+table{
     page-break-inside: avoid !important;
 }
 

@@ -12,7 +12,7 @@ public class TestHeaderDAO {
   @Test
   public void test() {
     
-    System.out.println(headerDao.getHeaderByInovice("05000001"));
+    System.out.println(headerDao.getHeaderByInovice("50216002"));
   }
 
   @Test

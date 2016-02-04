@@ -13,7 +13,7 @@ public class TestLineDAO {
   
   @Test
   public void test() {
-    java.util.List<Line> lines = lineDAO.getLinesByInvoice("05000001");
+    java.util.List<Line> lines = lineDAO.getLinesByInvoice("50216002");
     
     for(Line line: lines) {
       System.out.println(line);
