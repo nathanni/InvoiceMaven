@@ -18,6 +18,10 @@
             document.getElementById('pdfkit_invoice').textContent = invoice;
             document.getElementById('pdfkit_invoiceDate').textContent = invoiceDate;
             document.getElementById('pdfkit_page').textContent = page;
+            if(pageCurrent == 1) {
+                document.getElementById("tableheader").style.display="none";
+            }
+
         }
     </script>
 </head>
@@ -57,7 +61,28 @@
                 </div>
             </td>
         </tr>
+        <tr id="tableheader">
+            <td colspan="3">
+            <table class="table table-linetable-header">
+                <colgroup>
+                    <col class="t10">
+                    <col class="t20">
+                    <col class="t30">
+                    <col class="t40">
+                    <col class="t50">
+                </colgroup>
+                <tr>
+                    <td class="td head" width="50%" style="padding-left: 7px">PARTNUMBER DESCRIPTION</td>
+                    <td class="td head" align="center">QTY SHIPPED</td>
+                    <td class="td head" align="center">UNIT PRICE</td>
+                    <td class="td head" align="center">DISCOUNT</td>
+                    <td class="td head" align="center">EXTENSION</td>
+                </tr>
+                </td>
+            </table>
+        </tr>
     </table>
+
     </div>
 </body>
 </html>
