@@ -1,0 +1,1 @@
+﻿wkhtmltopdf --enable-smart-shrinking -L 1mm -R 1mm -s Letter --header-html http://localhost:8080/Invoice/header.html http://localhost:8080/Invoice/invoice?invoice=03651534 test1.pdf
