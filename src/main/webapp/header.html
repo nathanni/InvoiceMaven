@@ -15,9 +15,15 @@
             var page = pageCurrent + " / " + pageCount;
             var invoice = pdfInfo.invoice || 0;
             var invoiceDate = pdfInfo.invoiceDate || "01/01/1990";
+            var remit = pdfInfo.remit || 0;
             document.getElementById('pdfkit_invoice').textContent = invoice;
             document.getElementById('pdfkit_invoiceDate').textContent = invoiceDate;
             document.getElementById('pdfkit_page').textContent = page;
+            if(remit == 1) {
+                document.getElementById("ncremit").style.display = "none";
+            } else {
+                document.getElementById("txremit").style.display = "none";
+            }
         }
     </script>
 </head>
@@ -27,7 +33,7 @@
         <tr>
             <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
             </td>
-            <td class="td remit">
+            <td class="td remit" id="ncremit">
                 <div class="div remit head">REMIT TO:</div>
                 <div class="div remit text">
                     <div>C/O Bank of America Lockbox.</div>
@@ -35,6 +41,16 @@
                     <div>Atlanta, GA 30384-4581</div>
                     <div>336/764-6400</div>
                     <div>FAX 336/764-1501</div>
+                </div>
+            </td>
+            <td class="td remit" id="txremit">
+                <div class="div remit head">REMIT TO:</div>
+                <div class="div remit text">
+                    <div>Atrium Windows and Doors</div>
+                    <div>P.O. Box 848446</div>
+                    <div>Dallas, TX 75284-8446</div>
+                    <div>800/938-1000</div>
+                    <div>FAX 214/424-6721</div>
                 </div>
             </td>
             <td class="td invoice">

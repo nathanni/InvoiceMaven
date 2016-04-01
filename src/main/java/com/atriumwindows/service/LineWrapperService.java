@@ -25,20 +25,20 @@ public class LineWrapperService {
 
 
 
-    //if lines are not from l1 and l2
-    if(lines == null || lines.size() == 0) {
-      lines = lineDAO.getLinesByInoivceWithoutL1L2(invoice);
-      if(lines == null || lines.size() == 0) return null; //no lines get
-      for(Line line : lines) {
-        lineDAO.handleDescWithoutL1L2(line);
-        lineWrapper = new LineWrapper();
-        lineWrapper.setConfigLine(null);
-        lineWrapper.getLines().add(line);
-        lineWrappers.add(lineWrapper);
-      }
-
-      return lineWrappers;
-    }
+//    //if lines are not from l1 and l2
+//    if(lines == null || lines.size() == 0) {
+//      lines = lineDAO.getLinesByInvoiceWithoutL1L2(invoice);
+//      if(lines == null || lines.size() == 0) return null; //no lines get
+//      for(Line line : lines) {
+//        lineDAO.handleDescWithoutL1L2(line);
+//        lineWrapper = new LineWrapper();
+//        lineWrapper.setConfigLine(null);
+//        lineWrapper.getLines().add(line);
+//        lineWrappers.add(lineWrapper);
+//      }
+//
+//      return lineWrappers;
+//    }
 
 
 
@@ -51,7 +51,13 @@ public class LineWrapperService {
       lineDAO.handleSize(line);
       lineDAO.handleDesc(line);
       
-      if(validateSet.add(line.getItemId())) {
+//      if(validateSet.add(line.getItemId())) {
+//        if(lineWrapper != null) lineWrappers.add(lineWrapper);
+//        lineWrapper = new LineWrapper();
+//      }
+
+      //use wwline instead of itemid to group lines
+      if(validateSet.add(line.getWwLine())) {
         if(lineWrapper != null) lineWrappers.add(lineWrapper);
         lineWrapper = new LineWrapper();
       }

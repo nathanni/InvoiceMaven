@@ -25,6 +25,16 @@ public class Line {
   private String sizeNS;
   private String sizeES;
 
+  private Integer wwLine;
+
+  public Integer getWwLine() {
+    return wwLine;
+  }
+
+  public void setWwLine(Integer wwLine) {
+    this.wwLine = wwLine;
+  }
+
   public int getLineTypeId() {
     return lineTypeId;
   }
@@ -217,6 +227,7 @@ public class Line {
             ", size='" + size + '\'' +
             ", sizeNS='" + sizeNS + '\'' +
             ", sizeES='" + sizeES + '\'' +
+            ", wwLine=" + wwLine +
             '}';
   }
 }

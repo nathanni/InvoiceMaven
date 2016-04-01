@@ -28,6 +28,8 @@ public class InvoiceServlet extends javax.servlet.http.HttpServlet {
                 if(header != null && lineWrappers != null) {
                     request.setAttribute("header", header);
                     request.setAttribute("lines", lineWrappers);
+                    int remit = invoice.matches("^5\\d+") ? 1:0; //1: TX, 0: NC
+                    request.setAttribute("remit" ,remit);
                     request.getRequestDispatcher("/WEB-INF/pages/invoice.jsp").forward(request, response);
                     return;
                 }

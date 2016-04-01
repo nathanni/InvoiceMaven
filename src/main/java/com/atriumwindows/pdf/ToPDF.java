@@ -61,12 +61,12 @@ public class ToPDF {
     }
 
 
-    public String invoiceToPDF(boolean save, String invoice, String invoiceDate) {
+    public String invoiceToPDF(boolean save, String invoice, String invoiceDate, int remit) {
 
 
         String uri = servletContextPath+ "/invoice?invoice=" + invoice;
         String outputFile;
-        String params = "--header-html " + servletContextPath +  "/header.html?invoice=" + invoice + "&invoiceDate=" + invoiceDate;
+        String params = "--header-html " + servletContextPath +  "/header.html?invoice=" + invoice + "&invoiceDate=" + invoiceDate + "&remit=" + remit;
 
         if(save) {
             outputFile = savePath + "Invoice" + invoice + "_" + System.currentTimeMillis() + ".pdf";

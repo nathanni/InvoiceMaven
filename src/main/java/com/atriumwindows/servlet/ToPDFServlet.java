@@ -57,7 +57,8 @@ public class ToPDFServlet extends HttpServlet {
             throws ServletException, IOException {
         String invoice = request.getParameter("invoice");
         String invoiceDate = request.getParameter("invoicedate");
-        String filename = toPDF.invoiceToPDF(false, invoice, invoiceDate);
+        int remit = invoice.matches("^5\\d+") ? 1:0; //1: TX, 0: NC
+        String filename = toPDF.invoiceToPDF(false, invoice, invoiceDate, remit);
         downloadFile(request, response, filename);
         return;
     }

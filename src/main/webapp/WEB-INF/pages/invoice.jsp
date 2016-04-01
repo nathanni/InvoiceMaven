@@ -17,7 +17,6 @@
 <div class="container">
 
 
-
     <table class="table">
 
         <%--if from get(pdf side) method,  hide header--%>
@@ -30,23 +29,41 @@
                     </a>
                     <a href="invoicetopdf.do?invoice=${requestScope.header.invoice}&invoicedate=${requestScope.header.invoiceDate}">
                         <button type="button" class="btn btn-success"
-                                href=>Download PDF</button>
+                                href=>Download PDF
+                        </button>
                     </a>
                 </div>
             </div>
             <tr>
                 <td class="td logo"><img src="images/atrium_windows.jpeg" class="img-rounded" width="220" height="110">
                 </td>
-                <td class="td remit">
-                    <div class="div remit head">REMIT TO:</div>
-                    <div class="div remit text">
-                        <div>C/O Bank of America Lockbox.</div>
-                        <div>P.O. Box 404581</div>
-                        <div>Atlanta, GA 30384-4581</div>
-                        <div>336/764-6400</div>
-                        <div>FAX 336/764-1501</div>
-                    </div>
-                </td>
+
+                <c:choose>
+                    <c:when test="${requestScope.remit == 1}">
+                        <td class="td remit" id="txremit">
+                            <div class="div remit head">REMIT TO:</div>
+                            <div class="div remit text">
+                                <div>Atrium Windows and Doors</div>
+                                <div>P.O. Box 848446</div>
+                                <div>Dallas, TX 75284-8446</div>
+                                <div>800/938-1000</div>
+                                <div>FAX 214/424-6721</div>
+                            </div>
+                        </td>
+                    </c:when>
+                    <c:otherwise>
+                        <td class="td remit" id="ncremit">
+                            <div class="div remit head">REMIT TO:</div>
+                            <div class="div remit text">
+                                <div>C/O Bank of America Lockbox.</div>
+                                <div>P.O. Box 404581</div>
+                                <div>Atlanta, GA 30384-4581</div>
+                                <div>336/764-6400</div>
+                                <div>FAX 336/764-1501</div>
+                            </div>
+                        </td>
+                    </c:otherwise>
+                </c:choose>
                 <td class="td invoice">
                     <div class="div invoice head">INVOICE</div>
                     <div>
@@ -222,9 +239,12 @@
                                     </c:otherwise>
                                 </c:choose>
                                 <td align="center">${line.shippedQty}</td>
-                                <td align="center">${line.unitPrice}</td>
+                                <td align="center"><fmt:formatNumber minFractionDigits="2" value="${line.unitPrice}"
+                                                                     type="number"></fmt:formatNumber></td>
                                 <td></td>
-                                <td align="center">${line.extensionPrice}</td>
+                                <td align="center"><fmt:formatNumber minFractionDigits="2"
+                                                                     value="${line.extensionPrice}"
+                                                                     type="number"></fmt:formatNumber></td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -252,7 +272,9 @@
                         <td></td>
                         <td></td>
                         <td colspan="2"><b>INVOICE TOTAL:</b></td>
-                        <td align="center"><b>${requestScope.header.invoiceTotal}</b></td>
+                        <td align="center"><b><fmt:formatNumber minFractionDigits="2"
+                                                                value="${requestScope.header.invoiceTotal}"
+                                                                type="number"></fmt:formatNumber></b></td>
                     </tr>
                 </table>
 

@@ -29,31 +29,40 @@ public class ProcessInvoice {
 
         // 2. Process invoice for email in the accounts list
         for (Account account : accounts) {
-            attachmentsList = new ArrayList<>();
 
-            //get invoices from specific account in sepecific date
-            invoices = emailInvoiceDAO.getInvoiceInfoFromSpecificAccount(account.getAccountId());
+            try {
+                attachmentsList = new ArrayList<>();
 
-            for (Map.Entry<String, Date> invoice : invoices.entrySet()) {
-                String invoiceDate = new SimpleDateFormat("MM/dd/YYYY").format(invoice.getValue());
-                String file = ToPDF.getInstance().invoiceToPDF(true, invoice.getKey(), invoiceDate);
-                attachmentsList.add(file);
-            }
+                //get invoices from specific account in sepecific date
+                invoices = emailInvoiceDAO.getInvoiceInfoFromSpecificAccount(account.getAccountId());
+
+                for (Map.Entry<String, Date> invoice : invoices.entrySet()) {
+                    String invoiceDate = new SimpleDateFormat("MM/dd/YYYY").format(invoice.getValue());
+                    int remit = invoice.getKey().matches("^5\\d+") ? 1:0; //1: TX, 0: NC
+                    String file = ToPDF.getInstance().invoiceToPDF(true, invoice.getKey(), invoiceDate, remit);
+                    attachmentsList.add(file);
+                }
 
 
-            //Send email
-            //title
-            String title = "Invoices for " + account.getAccountId();
+                //Send email
+                //title
+                String title = "Invoices for " + account.getAccountId();
 
-            //message
-            StringBuffer message = new StringBuffer();
-            message.append("Daily Invoices For: " + account.getAccountId()).append("\n");
+                //message
+                StringBuffer message = new StringBuffer();
+                message.append("Daily Invoices For: " + account.getAccountId()).append("\n");
 
-            SendEmail.getInstance().sendEmail(account.getEmail(), attachmentsList, title, new String(message));
+                SendEmail.getInstance().sendEmail(account.getEmail(), attachmentsList, title, new String(message));
 
             /* LOGGER: TO DO
             *  Account, Invoices List
             * */
+            } catch (Exception e) {
+                System.out.println("------------------errors in sending email------------------");
+                e.printStackTrace();
+                continue; // if there is error happened in 1 of these step, still need to continue
+            }
+
 
         }
 

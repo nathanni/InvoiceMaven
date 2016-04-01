@@ -16,7 +16,7 @@ public class EmailInvoiceDAOImpl extends DAOImpl<Account> implements EmailInvoic
     @Override
     public List<Account> getAccountsForEmailInvoice() {
 
-        String sql = "SELECT a.accountid accountId, a.invemail_addr email FROM accountsmaster a WHERE a.inv_preferred_method = 4" +
+        String sql = "SELECT a.accountid accountId, a.invemail_addr email FROM accountsmaster a WHERE a.inv_preferred_method = 4 AND a.invemail_addr IS NOT NULL" +
                 " AND a.accountid IN (SELECT TRIM(d.custcode) FROM dts_arimaster d WHERE d.invoice_processed = 0)";
         return this.getForList(sql);
 
