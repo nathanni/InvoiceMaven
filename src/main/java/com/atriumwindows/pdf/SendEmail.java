@@ -23,11 +23,13 @@ public class SendEmail {
     private static String host;
     private static int port;
     private static String replyTo;
+    private static String bcc;
 
     static {
         host = EmailProperties.getInstance().getProperty("host");
         port = Integer.parseInt(EmailProperties.getInstance().getProperty("port"));
         replyTo = EmailProperties.getInstance().getProperty("replyto");
+        bcc = EmailProperties.getInstance().getProperty("bccbox");
     }
 
 
@@ -42,6 +44,7 @@ public class SendEmail {
             email.setSubject(title);
             email.setMsg(message);
             email.addTo(toAddr);
+            email.addBcc(bcc);
 
 
             // Create the attachment

@@ -1,4 +1,4 @@
-
+﻿
 Edit Apex 107  - accounting
 
 
@@ -7,3 +7,5 @@ index:
 DTS_ARIMASTER INDEX
 invoice_date
 TRIM(custcode)
+
+测试是否需要INDEX

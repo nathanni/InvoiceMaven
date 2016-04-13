@@ -50,9 +50,14 @@ public class ProcessInvoice {
 
                 //message
                 StringBuffer message = new StringBuffer();
-                message.append("Daily Invoices For: " + account.getAccountId()).append("\n");
+                message.append("Daily Invoices For: " + account.getAccountId()).append("\n").append("\n");
+                message.append("Please do not reply to this e-mail.  If you need further assistance, please contact Atrium Accounts Receivable at (336)764-6400 or Atrium Customer Service Center at (800)846-9556").append("\n");
 
                 SendEmail.getInstance().sendEmail(account.getEmail(), attachmentsList, title, new String(message));
+
+                System.out.println("-------------------------------------------");
+                System.out.println("Email sent !!!! Time: " + new java.util.Date(System.currentTimeMillis()));
+                System.out.println("-------------------------------------------");
 
             /* LOGGER: TO DO
             *  Account, Invoices List

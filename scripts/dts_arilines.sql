@@ -1,5 +1,5 @@
 ALTER TABLE mssql.dts_arilines
-ADD(WWLINE NUMBER(1));
+ADD(WWLINE NUMBER(4));
 ALTER TABLE mssql.dts_arilines
 ADD(WIDTHES NUMBER(7,3));
 ALTER TABLE mssql.dts_arilines

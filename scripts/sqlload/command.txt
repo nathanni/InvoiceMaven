@@ -1,0 +1,5 @@
+﻿sqlldr mssql/mssql errors=9999999 multithreading=false DIRECT=Y control=/wizmgr/sqlload/test/dts_arilines_append.ctl log=/wizmgr/sqlload/test/dts_arilines_append.log bad=/wizmgr/sqlload/test/dts_arilines_append.bad
+
+
+
+sqlldr mssql/mssql errors=9999999 multithreading=false DIRECT=Y control=/wizmgr/sqlload/test/dts_arimaster_append.ctl log=/wizmgr/sqlload/test/dts_arimaster_append.log bad=/wizmgr/sqlload/test/dts_arimaster_append.bad

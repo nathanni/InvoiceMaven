@@ -44,7 +44,7 @@ public class LineDAOImpl extends DAOImpl<Line> implements LineDAO{
   public void handleDesc(Line line) {
 
     //handle baybow description
-    if(line.getLineTypeId() == 4) {
+    if(line.getLineTypeId() == 4 || (line.getLineTypeId() != 3 && line.getSkuNumber() != null)) {
       line.setLineDesc((line.getL2Desc()==null?"":line.getL2Desc()) + " " + (line.getL1Desc()==null?"":line.getL1Desc()));
     } else {
       line.setLineDesc(line.getL2Desc());
