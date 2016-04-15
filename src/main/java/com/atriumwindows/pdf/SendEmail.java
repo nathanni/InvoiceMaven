@@ -47,8 +47,7 @@ public class SendEmail {
             email.setSubject(title);
             email.setMsg(message);
             email.addTo(toAddr);
-            email.addBcc(bcc1);
-            email.addBcc(bcc2);
+            email.addBcc(bcc1, bcc2);
 
 
             // Create the attachment

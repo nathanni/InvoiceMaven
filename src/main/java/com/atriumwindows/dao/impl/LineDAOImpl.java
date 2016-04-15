@@ -5,22 +5,22 @@ import com.atriumwindows.domain.Line;
 
 import java.util.List;
 
-public class LineDAOImpl extends DAOImpl<Line> implements LineDAO{
+public class LineDAOImpl extends DAOImpl<Line> implements LineDAO {
 
-  @Override
-  public List<Line> getLinesByInvoice(String invoice) {
-    String sql = "SELECT TRIM(l.l1_desc) l1Desc, TRIM(l.l2_desc) l2Desc, l.l1_linetypeid lineTypeId, "
-        + "l.l1_mutype muType, l.seq_no seqNo, TRIM(l.part_no) partNumber, TRIM(l.part_desc) partDesc, "
-        + "TRIM(l.skunumber) skuNumber, l.price_unit_price unitPrice, "
-        + "l.extension extensionPrice, l.line_disc discount, l.order_qty orderQty, l.shipped_qty shippedQty, l.itemId, l.unitId, "
-        + "'ES' sizeCode, l.widthes || '\" x ' || l.heightes || '\" ES' sizeES, wwline wwLine "
-        + "FROM dts_arilines l WHERE invoice = ?  ORDER BY SEQ_NO";
+    @Override
+    public List<Line> getLinesByInvoice(String invoice) {
+        String sql = "SELECT TRIM(l.l1_desc) l1Desc, TRIM(l.l2_desc) l2Desc, l.l1_linetypeid lineTypeId, "
+                + "l.l1_mutype muType, l.seq_no seqNo, TRIM(l.part_no) partNumber, TRIM(l.part_desc) partDesc, "
+                + "TRIM(l.skunumber) skuNumber, l.price_unit_price unitPrice, "
+                + "l.extension extensionPrice, l.line_disc discount, l.order_qty orderQty, l.shipped_qty shippedQty, l.itemId, l.unitId, "
+                + "'ES' sizeCode, l.widthes || '\" x ' || l.heightes || '\" ES' sizeES, wwline wwLine "
+                + "FROM dts_arilines l WHERE invoice = ?  ORDER BY SEQ_NO";
 
-    return this.getForList(sql, invoice);
-  }
+        return this.getForList(sql, invoice);
+    }
 
-  @Override
-  public void handleSize(Line line) {
+    @Override
+    public void handleSize(Line line) {
 
 /* We no longer pass NS, OS, only ES will be passed*/
 //    if(line.getSizeCode() != null && line.getSizeCode().equalsIgnoreCase("NS")) {
@@ -31,27 +31,33 @@ public class LineDAOImpl extends DAOImpl<Line> implements LineDAO{
 //      line.setSize("NO SIZE");
 //    }
 
-    if(line.getSizeCode() != null &&  line.getSizeCode().equalsIgnoreCase("ES")) {
-      line.setSize(line.getSizeES());
-    } else {
-      line.setSize("NO SIZE");
+        //use wwline to determine if the item has the new field passed from Caelus
+        if (line.getWwLine() == null && line.getL2Desc() == null) {
+            line.setSize("");
+        } else {
+            line.setSize(line.getSizeES());
+        }
+
+        line.setSizeES(null);
+        //line.setSizeNS(null);
     }
 
-    line.setSizeES(null);
-    //line.setSizeNS(null);
-  }
+    public void handleDesc(Line line) {
 
-  public void handleDesc(Line line) {
+        if (line.getL2Desc() == null) {
+            line.setLineDesc("PN:" + line.getPartNumber() + " DESC:" + line.getPartDesc() + " " + (line.getSkuNumber() == null ? "" : line.getSkuNumber()));
+        } else {
+            //handle baybow description
+            if (line.getLineTypeId() == 4 || (line.getLineTypeId() != 3 && line.getSkuNumber() != null)) {
+                line.setLineDesc((line.getL2Desc() == null ? "" : line.getL2Desc()) + " " + (line.getL1Desc() == null ? "" : line.getL1Desc()));
+            } else {
+                line.setLineDesc(line.getL2Desc());
+            }
+            line.setL2Desc(null);
+        }
 
-    //handle baybow description
-    if(line.getLineTypeId() == 4 || (line.getLineTypeId() != 3 && line.getSkuNumber() != null)) {
-      line.setLineDesc((line.getL2Desc()==null?"":line.getL2Desc()) + " " + (line.getL1Desc()==null?"":line.getL1Desc()));
-    } else {
-      line.setLineDesc(line.getL2Desc());
+        //We don't clean l1_desc, cuz we need to keep L1Desc to build configLine
     }
-    line.setL2Desc(null);
-    //We don't clean l1_desc, cuz we need to keep L1Desc to build configLine
-  }
 
     /* New fields are passed from CAELUS, we don't need to query L1_ITEM and L2_UNIT*/
 //  @Override
