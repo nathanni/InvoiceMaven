@@ -106,6 +106,7 @@
                     <div><span>${requestScope.header.soldToAddr3}</span></div>
                     <div><span>${requestScope.header.soldToAddr4}</span></div>
                     <div><span>${requestScope.header.soldToAddr5}</span></div>
+                    <div><span>${requestScope.header.soldToAddr6}</span></div>
                 </div>
             </td>
             <td class="td body1">
@@ -115,6 +116,7 @@
                     <div><span>${requestScope.header.shipToAddr3}</span></div>
                     <div><span>${requestScope.header.shipToAddr4}</span></div>
                     <div><span>${requestScope.header.shipToAddr5}</span></div>
+                    <div><span>${requestScope.header.shipToAddr6}</span></div>
                 </div>
             </td>
         </tr>
