@@ -1,9 +1,9 @@
 host=10.100.9.54
 port=25
-replyto=ariinvoice@atriumwindows.com
+replyto=arinvoice@atriumwindows.com
 replytoname=Atrium Invoice
-bccbox1=ariinvoice@atriumwindows.com
+bccbox1=arinvoice@atriumwindows.com
 bccbox2=nni@atriumwindows.com
 
 #format hh:mm:ss   (24-hour clock)
-jobtime=03:00:00
+jobtime=02:00:00
