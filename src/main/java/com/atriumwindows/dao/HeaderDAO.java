@@ -8,6 +8,8 @@ public interface HeaderDAO {
 
   Boolean setOrdermasterInfo(Header header);
 
+  Boolean getTermsDesc(Header header);
+
   String getInvoiceDate(String invoice);
 
 }

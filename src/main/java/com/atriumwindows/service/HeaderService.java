@@ -14,6 +14,7 @@ public class HeaderService {
     public Header getHeader(String invoice) {
         Header header = headerDAO.getHeaderByInovice(invoice);
         headerDAO.setOrdermasterInfo(header);
+        headerDAO.getTermsDesc(header);
         return header;
     }
 

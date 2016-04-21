@@ -6,9 +6,11 @@ public class Header {
   
   private String invoice;
   private Date invoiceDate;
-  private double cashDiscPct;
-  private Date discTerms;
-  private Date netTerms;
+  //private double cashDiscPct;
+  //private Date discTerms;
+  //private Date netTerms;
+  private String termsCode;
+  private String termsDesc;
   private String purchaseOrder;
   private String salesOrder;
   private String billOfLading;
@@ -18,7 +20,10 @@ public class Header {
   private String approvalNeeded;
   private String approvalCode;
   private String customerCode;
-  
+  private String loadNumber;
+
+
+
   private String shipToAddr1;
   private String shipToAddr2;
   private String shipToAddr3;
@@ -51,28 +56,45 @@ public class Header {
     this.invoiceDate = invoiceDate;
   }
 
-  public double getCashDiscPct() {
-    return cashDiscPct;
+//  public double getCashDiscPct() {
+//    return cashDiscPct;
+//  }
+//
+//  public void setCashDiscPct(double cashDiscPct) {
+//    this.cashDiscPct = cashDiscPct;
+//  }
+//
+//  public Date getDiscTerms() {
+//    return discTerms;
+//  }
+//
+//  public void setDiscTerms(Date discTerms) {
+//    this.discTerms = discTerms;
+//  }
+//
+//  public Date getNetTerms() {
+//    return netTerms;
+//  }
+//
+//  public void setNetTerms(Date netTerms) {
+//    this.netTerms = netTerms;
+//  }
+
+
+  public String getTermsCode() {
+    return termsCode;
   }
 
-  public void setCashDiscPct(double cashDiscPct) {
-    this.cashDiscPct = cashDiscPct;
+  public void setTermsCode(String termsCode) {
+    this.termsCode = termsCode;
   }
 
-  public Date getDiscTerms() {
-    return discTerms;
+  public String getTermsDesc() {
+    return termsDesc;
   }
 
-  public void setDiscTerms(Date discTerms) {
-    this.discTerms = discTerms;
-  }
-
-  public Date getNetTerms() {
-    return netTerms;
-  }
-
-  public void setNetTerms(Date netTerms) {
-    this.netTerms = netTerms;
+  public void setTermsDesc(String termsDesc) {
+    this.termsDesc = termsDesc;
   }
 
   public String getPurchaseOrder() {
@@ -251,14 +273,21 @@ public class Header {
     this.invoiceTotal = invoiceTotal;
   }
 
+  public String getLoadNumber() {
+    return loadNumber;
+  }
+
+  public void setLoadNumber(String loadNumber) {
+    this.loadNumber = loadNumber;
+  }
+
   @Override
   public String toString() {
     return "Header{" +
             "invoice='" + invoice + '\'' +
             ", invoiceDate=" + invoiceDate +
-            ", cashDiscPct=" + cashDiscPct +
-            ", discTerms=" + discTerms +
-            ", netTerms=" + netTerms +
+            ", termsCode='" + termsCode + '\'' +
+            ", termsDesc='" + termsDesc + '\'' +
             ", purchaseOrder='" + purchaseOrder + '\'' +
             ", salesOrder='" + salesOrder + '\'' +
             ", billOfLading='" + billOfLading + '\'' +
@@ -268,6 +297,7 @@ public class Header {
             ", approvalNeeded='" + approvalNeeded + '\'' +
             ", approvalCode='" + approvalCode + '\'' +
             ", customerCode='" + customerCode + '\'' +
+            ", loadNumber='" + loadNumber + '\'' +
             ", shipToAddr1='" + shipToAddr1 + '\'' +
             ", shipToAddr2='" + shipToAddr2 + '\'' +
             ", shipToAddr3='" + shipToAddr3 + '\'' +

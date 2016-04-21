@@ -12,7 +12,7 @@ public class TestHeaderService {
 
     @Test
     public void test() {
-        System.out.println(headerService.getHeader("05000001"));
+        System.out.println(headerService.getHeader("02145938"));
     }
 
 }

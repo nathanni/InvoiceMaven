@@ -95,10 +95,16 @@
     padding: 5px;
 }
 
-/*"TO" AND "SHIP TO", JOB NAME, CUSTOMER NUMBER BODY DIV*/
+/*"TO" AND "SHIP TO", JOB NAME, LOAD NUMBER BODY DIV*/
 .div.body1{
     font-size: small;
     margin: 0px;
+}
+
+/* CUSTOMER NUMBER DIV*/
+.div.body2 {
+    font-size: small;
+    margin-top: 7px;
 }
 
 /*0 PADDING*/

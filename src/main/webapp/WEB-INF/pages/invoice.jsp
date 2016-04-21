@@ -126,9 +126,13 @@
                     <span><b>JOB NAME: </b></span>
                     <span>${requestScope.header.jobName}</span>
                 </div>
+                <div class="div body1">
+                    <span><b>LOAD NUMBER: </b></span>
+                    <span>${requestScope.header.loadNumber}</span>
+                </div>
             </td>
             <td class="td body1">
-                <div class="div body1">
+                <div class="div body2">
                     <span><b>CUSTOMER NUMBER: </b></span>
                     <span>${requestScope.header.customerCode}</span>
                 </div>
@@ -141,9 +145,7 @@
                         <td>
                             <div class="div tableheader">PAYMENT TERMS</div>
                             <div class="div tablebody">
-                                ${requestScope.header.cashDiscPct}%
-                                <fmt:formatDate value="${requestScope.header.discTerms}" pattern="MM/dd/yyyy"/>,
-                                NET <fmt:formatDate value="${requestScope.header.netTerms}" pattern="MM/dd/yyyy"/>
+                                ${requestScope.header.termsDesc}
                             </div>
                         </td>
                         <td>
