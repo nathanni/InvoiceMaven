@@ -32,8 +32,9 @@ public class DBConnection {
         try {
             datasource = new ComboPooledDataSource("");
             datasource.setDriverClass("oracle.jdbc.OracleDriver"); //loads the jdbc driver
-            datasource.setJdbcUrl("jdbc:oracle:thin:@192.168.100.42:1521:wwqa");
+            //datasource.setJdbcUrl("jdbc:oracle:thin:@192.168.100.42:1521:wwqa");
             //datasource.setJdbcUrl("jdbc:oracle:thin:@192.168.100.42:1521:wwdev");
+            datasource.setJdbcUrl("jdbc:oracle:thin:@192.168.100.32:1521:wwprd");
             datasource.setUser("mssql");
             datasource.setPassword("welcome1");
             //datasource.setPassword("mssql");
