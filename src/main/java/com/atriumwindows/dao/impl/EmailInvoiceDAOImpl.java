@@ -17,7 +17,7 @@ public class EmailInvoiceDAOImpl extends DAOImpl<Account> implements EmailInvoic
     public List<Account> getAccountsForEmailInvoice() {
 
         String sql = "SELECT a.accountid accountId, a.invemail_addr email FROM accountsmaster a WHERE a.inv_preferred_method = 4 AND a.invemail_addr IS NOT NULL" +
-                " AND a.accountid IN (SELECT TRIM(d.custcode) FROM dts_arimaster d WHERE d.invoice_processed = 0)";
+                " AND a.accountid IN (SELECT TRIM(d.custcode) FROM dts_arimaster d WHERE d.invoice_processed = 0 AND d.invoice_type != 'C')";
         return this.getForList(sql);
 
     }
@@ -26,7 +26,8 @@ public class EmailInvoiceDAOImpl extends DAOImpl<Account> implements EmailInvoic
     //get Invoice and InvoiceDate pair
     @Override
     public Map<String, Date> getInvoiceInfoFromSpecificAccount(String accountId) {
-        String sql = "SELECT invoice, invoice_date FROM dts_arimaster WHERE TRIM(custcode) = ? AND invoice_processed = 0";
+        //dont process for credit
+        String sql = "SELECT invoice, invoice_date FROM dts_arimaster WHERE TRIM(custcode) = ? AND invoice_processed = 0 AND invoice_type != 'C'";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -51,7 +52,7 @@ public class EmailInvoiceDAOImpl extends DAOImpl<Account> implements EmailInvoic
 
     @Override
     public List<String> getInvoicesFromSpecificAccount(String accountId) {
-        String sql = "SELECT invoice FROM dts_arimaster WHERE TRIM(custcode) = ? AND invoice_processed = 0";
+        String sql = "SELECT invoice FROM dts_arimaster WHERE TRIM(custcode) = ? AND invoice_processed = 0 AND invoice_type != 'C'";
         return this.getForValueList(sql, accountId);
     }
 

@@ -36,6 +36,8 @@ public class ProcessInvoice {
                 //get invoices from specific account in sepecific date
                 invoices = emailInvoiceDAO.getInvoiceInfoFromSpecificAccount(account.getAccountId());
 
+                if(invoices == null) continue;
+
                 for (Map.Entry<String, Date> invoice : invoices.entrySet()) {
                     String invoiceDate = new SimpleDateFormat("MM/dd/YYYY").format(invoice.getValue());
                     int remit = invoice.getKey().matches("^5\\d+") ? 1:0; //1: TX, 0: NC
