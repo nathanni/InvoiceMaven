@@ -42,7 +42,10 @@ public class ProcessInvoice {
                     String invoiceDate = new SimpleDateFormat("MM/dd/YYYY").format(invoice.getValue());
                     int remit = invoice.getKey().matches("^5\\d+") ? 1:0; //1: TX, 0: NC
                     String file = ToPDF.getInstance().invoiceToPDF(true, invoice.getKey(), invoiceDate, remit);
-                    attachmentsList.add(file);
+                    //avoid null pointer issues when sending emails
+                    if (file != null) {
+                        attachmentsList.add(file);
+                    }
                 }
 
 
@@ -57,9 +60,8 @@ public class ProcessInvoice {
 
                 SendEmail.getInstance().sendEmail(account.getEmail(), attachmentsList, title, new String(message));
 
-                System.out.println("-------------------------------------------");
                 System.out.println("Email sent !!!! Time: " + new java.util.Date(System.currentTimeMillis()));
-                System.out.println("-------------------------------------------");
+                System.out.println("Title: " + title);
 
             /* LOGGER: TO DO
             *  Account, Invoices List
