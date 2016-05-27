@@ -60,6 +60,7 @@ public class ProcessInvoice {
 
                 SendEmail.getInstance().sendEmail(account.getEmail(), attachmentsList, title, new String(message));
 
+                System.out.println("----------------------------------------------------------");
                 System.out.println("Email sent !!!! Time: " + new java.util.Date(System.currentTimeMillis()));
                 System.out.println("Title: " + title);
 

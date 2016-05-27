@@ -77,10 +77,22 @@ public class ToPDF {
 
         if (executeCmd(uri, outputFile, params)) return outputFile;
 
-        return null;
+        return checkFile(outputFile);
     }
 
-
+    private String checkFile(String outputFile) {
+        try {
+            File file = new File(outputFile);
+            if(file.exists()) {
+                return outputFile;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Errors when reading: " + outputFile);
+            return null;
+        }
+    }
 
 
     public String uriToPDF(String uri) {
@@ -94,7 +106,9 @@ public class ToPDF {
 
         if (executeCmd(uri, outputFile, null)) return outputFile;
 
-        return null;
+
+        return checkFile(outputFile);
+
 
     }
 
