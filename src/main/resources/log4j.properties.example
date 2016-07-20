@@ -1,4 +1,4 @@
-log4j.rootLogger=info, stdout, log, warnlog, errorlog
+log4j.rootLogger=info, stdout, log, warnlog, errorlog, histlog, proclog
 
 ###Console ###
 log4j.appender.stdout = org.apache.log4j.ConsoleAppender
@@ -8,7 +8,7 @@ log4j.appender.stdout.layout.ConversionPattern =  %d{ABSOLUTE} [ %t ] [ %p ]:%L 
 
 ### Log ###
 log4j.appender.log = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.log.File = ${rootPath}/WEB-INF/logs/log.log
+log4j.appender.log.File = C:\\Users\\nni\\Desktop\\PDF\\logs\\log.log
 log4j.appender.log.Append = true
 log4j.appender.log.Threshold = INFO
 log4j.appender.log.DatePattern='.'yyyy-MM-dd
@@ -17,18 +17,42 @@ log4j.appender.log.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss} [ %t ] %m
 
 ### Warning ###
 log4j.appender.warnlog = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.warnlog.File = ${rootPath}/WEB-INF/logs/warn.log
+log4j.appender.warnlog.File = C:\\Users\\nni\\Desktop\\PDF\\logs\\warn.log
 log4j.appender.warnlog.Append = true
-log4j.appender.warnlog.Threshold = WARN
+log4j.appender.warnlog.filter.filter1 = org.apache.log4j.varia.LevelRangeFilter
+log4j.appender.warnlog.filter.filter1.LevelMax = ERROR
+log4j.appender.warnlog.filter.filter1.LevelMin = WARN
 log4j.appender.warnlog.DatePattern='.'yyyy-MM-dd
 log4j.appender.warnlog.layout = org.apache.log4j.PatternLayout
 log4j.appender.warnlog.layout.ConversionPattern =%-d{yyyy-MM-dd HH:mm:ss} [ %t ] %m%n
 
 ### Error ###
 log4j.appender.errorlog = org.apache.log4j.DailyRollingFileAppender
-log4j.appender.errorlog.File = ${rootPath}/WEB-INF/logs/error.log
+log4j.appender.errorlog.File = C:\\Users\\nni\\Desktop\\PDF\\logs\\error.log
 log4j.appender.errorlog.Append = true
-log4j.appender.errorlog.Threshold = ERROR
+log4j.appender.errorlog.filter.filter1 = org.apache.log4j.varia.LevelRangeFilter
+log4j.appender.errorlog.filter.filter1.LevelMax = ERROR
+log4j.appender.errorlog.filter.filter1.LevelMin = ERROR
 log4j.appender.errorlog.DatePattern='.'yyyy-MM-dd
 log4j.appender.errorlog.layout = org.apache.log4j.PatternLayout
 log4j.appender.errorlog.layout.ConversionPattern =%-d{yyyy-MM-dd HH:mm:ss} [ %t ] %m%n
+
+### History ###
+log4j.appender.histlog = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.histlog.File = C:\\Users\\nni\\Desktop\\PDF\\logs\\hist.log
+log4j.appender.histlog.Append = true
+log4j.appender.histlog.Threshold = OFF
+log4j.appender.histlog.DatePattern='.'yyyy-MM-dd
+log4j.appender.histlog.layout = org.apache.log4j.PatternLayout
+log4j.appender.histlog.layout.ConversionPattern =%-d{yyyy-MM-dd HH:mm:ss}  %m%n
+
+### Process ###
+log4j.appender.proclog = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.proclog.File = C:\\Users\\nni\\Desktop\\PDF\\logs\\proc.log
+log4j.appender.proclog.Append = true
+log4j.appender.proclog.filter.filter1 = org.apache.log4j.varia.LevelRangeFilter
+log4j.appender.proclog.filter.filter1.LevelMax = FATAL
+log4j.appender.proclog.filter.filter1.LevelMin = FATAL
+log4j.appender.proclog.DatePattern='.'yyyy-MM-dd
+log4j.appender.proclog.layout = org.apache.log4j.PatternLayout
+log4j.appender.proclog.layout.ConversionPattern =%-d{yyyy-MM-dd HH:mm:ss}  %m%n
