@@ -243,10 +243,10 @@
                                     </c:otherwise>
                                 </c:choose>
                                 <td align="center">${line.shippedQty}</td>
-                                <td align="center"><fmt:formatNumber minFractionDigits="2" value="${line.unitPrice}"
+                                <td align="center"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${line.unitPrice}"
                                                                      type="number"></fmt:formatNumber></td>
                                 <td></td>
-                                <td align="center"><fmt:formatNumber minFractionDigits="2"
+                                <td align="center"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2"
                                                                      value="${line.extensionPrice}"
                                                                      type="number"></fmt:formatNumber></td>
                             </tr>

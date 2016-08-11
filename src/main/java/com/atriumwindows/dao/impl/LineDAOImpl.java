@@ -11,7 +11,7 @@ public class LineDAOImpl extends DAOImpl<Line> implements LineDAO {
     public List<Line> getLinesByInvoice(String invoice) {
         String sql = "SELECT TRIM(l.l1_desc) l1Desc, TRIM(l.l2_desc) l2Desc, l.l1_linetypeid lineTypeId, "
                 + "l.l1_mutype muType, l.seq_no seqNo, TRIM(l.part_no) partNumber, TRIM(l.part_desc) partDesc, "
-                + "TRIM(l.skunumber) skuNumber, l.price_unit_price unitPrice, "
+                + "TRIM(l.skunumber) skuNumber, l.extension /  nullif(l.shipped_qty,0) unitPrice, "
                 + "l.extension extensionPrice, l.line_disc discount, l.order_qty orderQty, l.shipped_qty shippedQty, l.itemId, l.unitId, "
                 + "'ES' sizeCode, l.widthes || '\" x ' || l.heightes || '\" ES' sizeES, wwline wwLine "
                 + "FROM dts_arilines l WHERE invoice = ?  ORDER BY SEQ_NO";
