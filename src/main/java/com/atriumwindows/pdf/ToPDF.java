@@ -175,12 +175,14 @@ public class ToPDF {
                     p = rt.exec(programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                 } else {
-                    p = rt.exec(programPath + " " + sysDefParams + " " + params + " \"" + uri + "\" \"" + outputFile + "\"");
+                    uri = "\"" + uri + "\"";
+                    outputFile = "\"" + outputFile + "\"";
+                    p = rt.exec(programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                 }
                 status = p.waitFor();
                 readProcessOutput(p);
-                myLogger.proc("------------------");
+                myLogger.proc("-----------------------------------------------------------------");
                 myLogger.proc("");
             } catch (Exception e) {
                 e.printStackTrace();
