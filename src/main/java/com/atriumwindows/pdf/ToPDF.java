@@ -128,7 +128,7 @@ public class ToPDF {
 
         String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
 
-        String params = "--footer-center  \"Page: [page] / [topage]\" --footer-line";
+        String params = "--footer-center \"Page: [page] / [topage]\" --footer-line";
 
         executeCmd(uri, outputFile, params, false);
 
@@ -167,7 +167,7 @@ public class ToPDF {
             }
         } else {
             try {
-                myLogger.proc("This is for API processing: ");
+                myLogger.proc("------------------This is for API processing: ------------------");
                 myLogger.proc("Processing by wkhtmltopdf: ");
                 myLogger.proc("URI: " + uri);
                 myLogger.proc("OUTPUT: " + outputFile);
@@ -175,11 +175,12 @@ public class ToPDF {
                     p = rt.exec(programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                 } else {
-                    p = rt.exec(programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
+                    p = rt.exec(programPath + " " + sysDefParams + " " + params + " \"" + uri + "\" \"" + outputFile + "\"");
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                 }
                 status = p.waitFor();
                 readProcessOutput(p);
+                myLogger.proc("------------------");
                 myLogger.proc("");
             } catch (Exception e) {
                 e.printStackTrace();
