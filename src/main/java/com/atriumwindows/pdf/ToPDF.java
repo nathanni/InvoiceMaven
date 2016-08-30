@@ -128,7 +128,7 @@ public class ToPDF {
 
         String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
 
-        String params = "--footer-center \"Page: [page] / [topage]\" --footer-line";
+        String params = "--footer-center \'Page: [page] / [topage]\' --footer-line";
 
         executeCmd(uri, outputFile, params, false);
 
@@ -159,7 +159,6 @@ public class ToPDF {
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                 }
                 status = p.waitFor();
-
                 readProcessOutput(p);
                 myLogger.proc("");
             } catch (Exception e) {
@@ -175,8 +174,6 @@ public class ToPDF {
                     p = rt.exec(programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + uri + " " + outputFile);
                 } else {
-                    uri = "\"" + uri + "\"";
-                    outputFile = "\"" + outputFile + "\"";
                     p = rt.exec(programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                     myLogger.proc("COMMAND: " + programPath + " " + sysDefParams + " " + params + " " + uri + " " + outputFile);
                 }
