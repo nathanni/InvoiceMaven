@@ -128,7 +128,7 @@ public class ToPDF {
 
         String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
 
-        String params = "--footer-center \"Page: [page] / [topage]\" --footer-line";
+        String params = "--footer-center %22Page: [page] / [topage]%22 --footer-line";
 
         executeCmd(uri, outputFile, params, false);
 
