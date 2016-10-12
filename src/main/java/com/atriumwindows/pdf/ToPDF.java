@@ -125,8 +125,16 @@ public class ToPDF {
         if(! (uri.startsWith("http://") || uri.startsWith("https://"))  ){
             uri = "http://" + uri;
         }
+        String outputFile = new String();
+        if (uri.contains("orderId")) {
+            String quote = uri.substring(uri.lastIndexOf("orderId=") + 8);
+            outputFile = tempPath + quote + ".pdf";
+        } else {
+            outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
+        }
 
-        String outputFile = tempPath + "temp" + System.currentTimeMillis() + ".pdf";
+
+
 
         String params = "--footer-right  [Page:[page]/[topage]] --footer-line";
 
