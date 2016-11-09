@@ -17,7 +17,7 @@ public class HeaderDAOImpl extends DAOImpl<Header> implements HeaderDAO {
                 + "TRIM(d.shipto_nm_addr4) shipToAddr4, TRIM(d.shipto_nm_addr5) shipToAddr5, TRIM(d.shipto_nm_addr6) shipToAddr6, "
                 + "TRIM(d.soldto_nm_addr1) soldToAddr1, TRIM(d.soldto_nm_addr2) soldToAddr2, TRIM(d.soldto_nm_addr3) soldToAddr3, "
                 + "TRIM(d.soldto_nm_addr4) soldToAddr4, TRIM(d.soldto_nm_addr5) soldToAddr5, TRIM(d.soldto_nm_addr6) soldToAddr6, "
-                + "d.gross_invoice invoiceTotal "
+                + "d.gross_invoice invoiceTotal, d.sales_tax_amt salesTax, d.net_invoice_amt netInvoice "
                 + "FROM dts_arimaster d WHERE invoice = ? AND rownum = 1 ";
 
         return this.get(sql, invoice);

@@ -243,7 +243,8 @@
                                     </c:otherwise>
                                 </c:choose>
                                 <td align="center">${line.shippedQty}</td>
-                                <td align="center"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${line.unitPrice}"
+                                <td align="center"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2"
+                                                                     value="${line.unitPrice}"
                                                                      type="number"></fmt:formatNumber></td>
                                 <td></td>
                                 <td align="center"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2"
@@ -272,14 +273,45 @@
                         <col class="t40">
                         <col class="t50">
                     </colgroup>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td colspan="2"><b>INVOICE TOTAL:</b></td>
-                        <td align="center"><b><fmt:formatNumber minFractionDigits="2"
-                                                                value="${requestScope.header.invoiceTotal}"
-                                                                type="number"></fmt:formatNumber></b></td>
-                    </tr>
+                    <c:choose>
+                        <c:when test="${requestScope.header.salesTax != 0}">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="2"><b>GROSS INVOICE:</b></td>
+                                    <td align="center"><b><fmt:formatNumber minFractionDigits="2"
+                                                                            value="${requestScope.header.invoiceTotal}"
+                                                                            type="number"></fmt:formatNumber></b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="2"><b>SALES TAX:</b></td>
+                                    <td align="center"><b><fmt:formatNumber minFractionDigits="2"
+                                                                            value="${requestScope.header.salesTax}"
+                                                                            type="number"></fmt:formatNumber></b></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="2"><b>INVOICE TOTAL:</b></td>
+                                    <td align="center"><b><fmt:formatNumber minFractionDigits="2"
+                                                                            value="${requestScope.header.netInvoice}"
+                                                                            type="number"></fmt:formatNumber></b></td>
+                                </tr>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td colspan="2"><b>INVOICE TOTAL:</b></td>
+                                <td align="center"><b><fmt:formatNumber minFractionDigits="2"
+                                                                        value="${requestScope.header.invoiceTotal}"
+                                                                        type="number"></fmt:formatNumber></b></td>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
+
                 </table>
 
             </td>

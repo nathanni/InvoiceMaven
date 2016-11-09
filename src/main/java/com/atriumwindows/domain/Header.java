@@ -39,6 +39,8 @@ public class Header {
   private String soldToAddr6;
   
   private double invoiceTotal;
+  private double salesTax;
+  private double netInvoice;
 
   public String getInvoice() {
     return invoice;
@@ -281,6 +283,14 @@ public class Header {
     this.loadNumber = loadNumber;
   }
 
+  public double getSalesTax() {
+    return salesTax;
+  }
+
+  public void setSalesTax(double salesTax) {
+    this.salesTax = salesTax;
+  }
+
   @Override
   public String toString() {
     return "Header{" +
@@ -311,7 +321,17 @@ public class Header {
             ", soldToAddr5='" + soldToAddr5 + '\'' +
             ", soldToAddr6='" + soldToAddr6 + '\'' +
             ", invoiceTotal=" + invoiceTotal +
+            ", salesTax=" + salesTax +
+            ", netInvoice=" + netInvoice +
             '}';
+  }
+
+  public double getNetInvoice() {
+    return netInvoice;
+  }
+
+  public void setNetInvoice(double netInvoice) {
+    this.netInvoice = netInvoice;
   }
 }
 
